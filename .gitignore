@@ -1,0 +1,3 @@
+# Ignore following files when commit changes
+
+.DS_Store
