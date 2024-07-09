@@ -34,4 +34,4 @@ pdf_file_prefix = u'esp-chip-errata'
 linkcheck_anchors = False
 
 # Measurement ID for Google Analytics
-google_analytics_id = 'G-RP8SCKE54N'
+google_analytics_id = ''

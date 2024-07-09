@@ -21,10 +21,10 @@ def getArgs():
     """
     parser = argparse.ArgumentParser(description='Post note to existing MR.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument( "authkey", type=str, help="Project or personal access token for authentication with GitLab. Create one at https://gitlab.com/profile/personal_access_tokens" )
-    parser.add_argument( "project", type=str, help="Path to GitLab project in the form <namespace>/<project>")
-    parser.add_argument( "mr_iid", type=str, help="Merge request number to post the message")
-    parser.add_argument( "--url",  help="Gitlab URL.")
+    parser.add_argument("authkey", type=str, help="Project or personal access token for authentication with GitLab. Create one at https://gitlab.com/profile/personal_access_tokens")
+    parser.add_argument("project", type=str, help="Path to GitLab project in the form <namespace>/<project>")
+    parser.add_argument("mr_iid", type=str, help="Merge request number to post the message")
+    parser.add_argument("--url", help="Gitlab URL.")
     return parser, parser.parse_args()
 
 
@@ -41,15 +41,18 @@ class PythonGitlabNotes():
         self.project_name = project
         self.mr_iid = mr_iid
         # Create python-gitlab server instance
-        server = gitlab.Gitlab(self.url, myargs.authkey, api_version=4, ssl_verify=False)
+        self.server = gitlab.Gitlab(self.url, self.authkey, api_version=4, ssl_verify=False)
         # Get an instance of the project and store it off
-        self.project = server.projects.get(self.project_name)
-
+        self.project = self.server.projects.get(self.project_name)
 
     def collect_data(self):
-        series_links = {}
         with open("logs/doc-url.txt", "r") as file:
-            for line in file:
+            series_links_html = {}
+            series_links_pdf = {}
+
+            lines = file.readlines()
+
+            for line in lines:
                 if line.startswith('[document preview]'):
                     tokens = line.split(']')
                     desc_url = tokens[2]
@@ -60,23 +63,46 @@ class PythonGitlabNotes():
                         chip_series = lang_chip[1]
                     if len(lang_chip) == 3:
                         language = 'zh_CN'
-                        chip_series = lang_chip[2]
+                        chip_series = lang_chip[2]      
 
-                    if chip_series in series_links:
-                        language_links = series_links[chip_series]
-                        language_links[language] = desc_url
-                    else:
-                        language_links = {language: desc_url}
-                    series_links[chip_series] = language_links
-        self.series_links = series_links
-        print(series_links)  # Debugging line
+                    # Construct new URL replacing 'index.html'
+                    if "index.html" in desc_url:
+                        pdf_url = desc_url.replace(
+                            "index.html",
+                            f"esp-chip-errata-{language}-master-{chip_series}.pdf"
+                        )
+                        
+                        if 'pdf' in pdf_url:
+                            if chip_series in series_links_pdf:
+                                language_links = series_links_pdf[chip_series]
+                                language_links[language] = pdf_url
+                            else:
+                                language_links = {language: pdf_url}
+                            series_links_pdf[chip_series] = language_links
+
+                        if 'html' in desc_url:
+                            if chip_series in series_links_html:
+                                language_links = series_links_html[chip_series]
+                                language_links[language] = desc_url
+                            else:
+                                language_links = {language: desc_url}
+                            series_links_html[chip_series] = language_links
+        
+        self.series_links_html = series_links_html
+        self.series_links_pdf = series_links_pdf
+        
+        # Debugging lines
+        print("HTML Links:", series_links_html)
+        print("PDF Links:", series_links_pdf)
 
     def prepare_note(self):
         """
         Prepare a note with links to be posted in .md format.
         """
         note = "Documentation preview:\n\n"
-        for chip_series, language_links in self.series_links.items():
+
+        # Process both HTML and PDF links
+        for chip_series, language_links_html in self.series_links_html.items():
             product_name = chip_series.upper()  # Default value
             if chip_series == 'esp32s2':
                 product_name = 'ESP32-S2'
@@ -88,18 +114,37 @@ class PythonGitlabNotes():
                 product_name = 'ESP32-C6'
             elif chip_series == 'esp32h2':
                 product_name = 'ESP32-H2'
-            note += f"- {product_name} "
-            if 'zh_CN' in language_links:
-                note += f"[勘误表]({language_links['zh_CN']})/"
+            note += f"- {product_name} \n"
+
+            # Append HTML link if available
+            if 'zh_CN' in language_links_html:
+                note += f"\t * HTML: [勘误表]({language_links_html['zh_CN']})/"
             else:
-                note += "勘误表/"
-            if 'en' in language_links:
-                note += f"[Errata]({language_links['en']})"
+                note += f"勘误表/"
+            if 'en' in language_links_html:
+                note += f"[Errata]({language_links_html['en']}) \n"
             else:
                 note += "Errata"
+
+            # Check if there are PDF links for the same chip series
+            if chip_series in self.series_links_pdf:
+                language_links_pdf = self.series_links_pdf[chip_series]
+                if 'zh_CN' in language_links_pdf:
+                    note += f"\t * PDF: [勘误表]({language_links_pdf['zh_CN']})/"
+                else:
+                    note += f"勘误表/"
+                if 'en' in language_links_pdf:
+                    note += f"[Errata]({language_links_pdf['en']}) \n"
+                else:
+                    note += "Errata"
+
             note += "\n"
+
+        # Store the note in the instance variable
         self.note = note
-        print(note)  # Debugging line
+
+        # Print the note for debugging
+        print(note)
 
     def post_note(self):
         """
@@ -119,4 +164,4 @@ class PythonGitlabNotes():
 if __name__ == '__main__':
     myParser, myargs = getArgs()
     sys.exit(PythonGitlabNotes(url=myargs.url, authkey=myargs.authkey,
-        project=myargs.project, mr_iid=myargs.mr_iid).run())
+                               project=myargs.project, mr_iid=myargs.mr_iid).run())
