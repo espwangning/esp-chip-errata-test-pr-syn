@@ -29,3 +29,4 @@
    03-errata-description/index
    :html: _tags/tagsindex
    revision-history/index
+   resources
