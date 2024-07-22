@@ -18,14 +18,17 @@ ESP32C3_DOCS = ['01-chip-identification/esp32c3/*.rst',
                 '02-errata-summary/esp32c3-errata-summary.rst',
                 '03-errata-description/esp32c3/*.rst',
                 '03-errata-description/shared/sar-adc-adc2-not-work.rst',
+                'revision-history/esp32c3-revision-history.rst',
                 ]
 ESP32C2_DOCS = ['01-chip-identification/esp32c2/*.rst',
                 '02-errata-summary/esp32c2-errata-summary.rst',
                 '03-errata-description/esp32c2/*.rst',
+                'revision-history/esp32c2-revision-history.rst',
                 ]
 ESP32S3_DOCS = ['01-chip-identification/esp32s3/*.rst',
                 '02-errata-summary/esp32s3-errata-summary.rst',
                 '03-errata-description/esp32s3/*.rst',
+                'revision-history/esp32s3-revision-history.rst',
                 ]
 ESP32C6_DOCS = ['01-chip-identification/esp32c6/*.rst',
                 '02-errata-summary/esp32c6-errata-summary.rst',
@@ -33,18 +36,22 @@ ESP32C6_DOCS = ['01-chip-identification/esp32c6/*.rst',
                 '03-errata-description/shared/clock-rc-fast-clk-inaccurate.rst',
                 '03-errata-description/shared/cpu-load-store.rst',
                 '03-errata-description/shared/rmt-idle-level-cannot-be-controlled.rst',
+                'revision-history/esp32c6-revision-history.rst',
                 ]
 ESP32S2_DOCS = ['01-chip-identification/esp32s2/*.rst',
                 '02-errata-summary/esp32s2-errata-summary.rst',
                 '03-errata-description/esp32s2/*.rst',
+                'revision-history/esp32s2-revision-history.rst',
                 ]
 ESP32H2_DOCS = ['01-chip-identification/esp32h2/*.rst',
                 '02-errata-summary/esp32h2-errata-summary.rst',
                 '03-errata-description/esp32h2/*.rst',
+                'revision-history/esp32h2-revision-history.rst',
                 ]
 ESP32_DOCS = ['01-chip-identification/esp32/*.rst',
               '02-errata-summary/esp32-errata-summary.rst',
               '03-errata-description/esp32/*.rst',
+              'revision-history/esp32-revision-history.rst',
               ]
 
 conditional_include_dict = {'esp32':ESP32_DOCS,
