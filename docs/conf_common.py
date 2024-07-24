@@ -11,6 +11,61 @@ extensions += ['sphinx_copybutton',
                'esp_docs.esp_extensions.dummy_build_system',
                ]
 
+ESP32C3_DOCS = ['03-errata-description/esp32c3/*.rst',
+                '03-errata-description/shared/sar-adc-adc2-not-work.rst',
+                '02-errata-summary/esp32c3-errata-summary.rst',
+                '01-chip-identification/esp32c3/chip-marking-identification.rst',
+                '01-chip-identification/esp32c3/module-marking-identification.rst',
+                '01-chip-identification/esp32c3/efuse-field-identification.rst',
+                ]
+ESP32C2_DOCS = ['03-errata-description/esp32c2/*.rst',
+                '02-errata-summary/esp32c2-errata-summary.rst',
+                '01-chip-identification/esp32c2/chip-marking-identification.rst',
+                '01-chip-identification/esp32c2/module-marking-identification.rst',
+                '01-chip-identification/esp32c2/efuse-field-identification.rst',
+                ]
+ESP32S3_DOCS = ['03-errata-description/esp32s3/*.rst',
+                '02-errata-summary/esp32s3-errata-summary.rst',
+                '01-chip-identification/esp32s3/chip-marking-identification.rst',
+                '01-chip-identification/esp32s3/module-marking-identification.rst',
+                '01-chip-identification/esp32s3/efuse-field-identification.rst',
+                ]
+ESP32C6_DOCS = ['03-errata-description/esp32c6/*.rst',
+                '03-errata-description/shared/clock-rc-fast-clk-inaccurate.rst',
+                '03-errata-description/shared/cpu-load-store.rst',
+                '03-errata-description/shared/rmt-idle-level-cannot-be-controlled.rst',
+                '02-errata-summary/esp32c6-errata-summary.rst',
+                '01-chip-identification/esp32c6/chip-marking-identification.rst',
+                '01-chip-identification/esp32c6/module-marking-identification.rst',
+                '01-chip-identification/esp32c6/efuse-field-identification.rst',
+                ]
+ESP32S2_DOCS = ['03-errata-description/esp32s2/*.rst',
+                '02-errata-summary/esp32s2-errata-summary.rst',
+                '01-chip-identification/esp32s2/chip-marking-identification.rst',
+                '01-chip-identification/esp32s2/module-marking-identification.rst',
+                '01-chip-identification/esp32s2/efuse-field-identification.rst',
+                ]
+ESP32H2_DOCS = ['03-errata-description/esp32h2/*.rst',
+                '02-errata-summary/esp32h2-errata-summary.rst',
+                '01-chip-identification/esp32h2/chip-marking-identification.rst',
+                '01-chip-identification/esp32h2/module-marking-identification.rst',
+                '01-chip-identification/esp32h2/efuse-field-identification.rst',
+                ]
+ESP32_DOCS = ['03-errata-description/esp32/*.rst',
+              '02-errata-summary/esp32-errata-summary.rst',
+              '01-chip-identification/esp32/chip-marking-identification.rst',
+              '01-chip-identification/esp32/module-marking-identification.rst',
+              '01-chip-identification/esp32/efuse-field-identification.rst',
+              ]
+
+conditional_include_dict = {'esp32':ESP32_DOCS,
+                            'esp32c2':ESP32C2_DOCS,
+                            'esp32c3':ESP32C3_DOCS,
+                            'esp32c6':ESP32C6_DOCS,
+                            'esp32s2':ESP32S2_DOCS,
+                            'esp32s3':ESP32S3_DOCS,
+                            'esp32h2':ESP32H2_DOCS}
+
 # link roles config
 github_repo = 'espressif/esp-chip-errata'
 
