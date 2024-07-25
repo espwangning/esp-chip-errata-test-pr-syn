@@ -1,3 +1,4 @@
 esp-docs>=1.7.1
 urllib3
 python-gitlab
+linuxdoc==20210324
