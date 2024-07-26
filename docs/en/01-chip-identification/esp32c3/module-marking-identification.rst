@@ -18,4 +18,4 @@
     * - v1.1
       - --
 
-  - \ :sup:`1` – means modules with this chip revision are not mass produced.
+  \ :sup:`1` – means modules with this chip revision are not mass produced.

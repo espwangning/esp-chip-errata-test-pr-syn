@@ -31,13 +31,13 @@ eFuse 位
 芯片标识
 ++++++++
 
-  - 芯片丝印的 **Espressif Tracking Information（乐鑫追踪信息）** 行
+- 芯片丝印的 **Espressif Tracking Information（乐鑫追踪信息）** 行
 
 .. _fig-chip-marking:
 
 .. figure:: ../../_static/chip-marking.png
     :align: center
-    :scale: 12%
+    :scale: 32%
     :alt: 芯片丝印示意图
 
     芯片丝印示意图
@@ -47,11 +47,11 @@ eFuse 位
 模组标识
 ++++++++
 
-  - 模组丝印的 **规格标识码** 行
+- 模组丝印的 **规格标识码** 行
 
   .. figure:: ../../_static/module-marking__CN.png
     :align: center
-    :scale: 15%
+    :scale: 55%
     :alt: 模组丝印示意图
 
     模组丝印示意图
@@ -79,7 +79,7 @@ eFuse 位
 
 .. figure:: ../../_static/PW-number.png
     :align: center
-    :scale: 40%
+    :scale: 37%
     :alt: 模组物料标签
 
     模组物料标签

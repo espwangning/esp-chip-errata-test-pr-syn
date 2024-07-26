@@ -1,4 +1,6 @@
-esp-docs>=1.7.1
+git+https://github.com/espwangning/esp-docs-for-errata.git #Temporary workaround to use sphinx 5.1.1
 urllib3
 python-gitlab
 linuxdoc==20210324
+sphinx-tags==0.4.0
+sphinx-design
