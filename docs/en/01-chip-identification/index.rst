@@ -37,7 +37,7 @@ Chip Marking
 
 .. figure:: ../../_static/chip-marking.png
     :align: center
-    :scale: 12%
+    :scale: 32%
     :alt: Chip Marking Diagram
 
     Chip Marking Diagram
@@ -47,11 +47,11 @@ Chip Marking
 Module Marking
 ++++++++++++++
 
-  - **Specification Identifier** line in module marking
+- **Specification Identifier** line in module marking
 
   .. figure:: ../../_static/module-marking__EN.png
       :align: center
-      :scale: 15%
+      :scale: 55%
       :alt: Module Marking Diagram
 
       Module Marking Diagram
@@ -79,7 +79,7 @@ Modules built around the chip may be identified by **PW Number** in product labe
 
 .. figure:: ../../_static/PW-number.png
     :align: center
-    :scale: 40%
+    :scale: 37%
     :alt: Module Product Label
 
     Module Product Label

@@ -10,53 +10,41 @@ extensions += ['sphinx_copybutton',
                # connected to another extension
                'esp_docs.esp_extensions.dummy_build_system',
                'linuxdoc.rstFlatTable', #https://return42.github.io/linuxdoc/linuxdoc-howto/table-markup.html#flat-table
+               'sphinx_tags', #https://sphinx-tags.readthedocs.io/en/latest/quickstart.html
+               'sphinx_design', #https://sphinx-design.readthedocs.io/en/latest/get_started.html
                ]
 
-ESP32C3_DOCS = ['03-errata-description/esp32c3/*.rst',
-                '03-errata-description/shared/sar-adc-adc2-not-work.rst',
+ESP32C3_DOCS = ['01-chip-identification/esp32c3/*.rst',
                 '02-errata-summary/esp32c3-errata-summary.rst',
-                '01-chip-identification/esp32c3/chip-marking-identification.rst',
-                '01-chip-identification/esp32c3/module-marking-identification.rst',
-                '01-chip-identification/esp32c3/efuse-field-identification.rst',
+                '03-errata-description/esp32c3/*.rst',
+                '03-errata-description/shared/sar-adc-adc2-not-work.rst',
                 ]
-ESP32C2_DOCS = ['03-errata-description/esp32c2/*.rst',
+ESP32C2_DOCS = ['01-chip-identification/esp32c2/*.rst',
                 '02-errata-summary/esp32c2-errata-summary.rst',
-                '01-chip-identification/esp32c2/chip-marking-identification.rst',
-                '01-chip-identification/esp32c2/module-marking-identification.rst',
-                '01-chip-identification/esp32c2/efuse-field-identification.rst',
+                '03-errata-description/esp32c2/*.rst',
                 ]
-ESP32S3_DOCS = ['03-errata-description/esp32s3/*.rst',
+ESP32S3_DOCS = ['01-chip-identification/esp32s3/*.rst',
                 '02-errata-summary/esp32s3-errata-summary.rst',
-                '01-chip-identification/esp32s3/chip-marking-identification.rst',
-                '01-chip-identification/esp32s3/module-marking-identification.rst',
-                '01-chip-identification/esp32s3/efuse-field-identification.rst',
+                '03-errata-description/esp32s3/*.rst',
                 ]
-ESP32C6_DOCS = ['03-errata-description/esp32c6/*.rst',
+ESP32C6_DOCS = ['01-chip-identification/esp32c6/*.rst',
+                '02-errata-summary/esp32c6-errata-summary.rst',
+                '03-errata-description/esp32c6/*.rst',
                 '03-errata-description/shared/clock-rc-fast-clk-inaccurate.rst',
                 '03-errata-description/shared/cpu-load-store.rst',
                 '03-errata-description/shared/rmt-idle-level-cannot-be-controlled.rst',
-                '02-errata-summary/esp32c6-errata-summary.rst',
-                '01-chip-identification/esp32c6/chip-marking-identification.rst',
-                '01-chip-identification/esp32c6/module-marking-identification.rst',
-                '01-chip-identification/esp32c6/efuse-field-identification.rst',
                 ]
-ESP32S2_DOCS = ['03-errata-description/esp32s2/*.rst',
+ESP32S2_DOCS = ['01-chip-identification/esp32s2/*.rst',
                 '02-errata-summary/esp32s2-errata-summary.rst',
-                '01-chip-identification/esp32s2/chip-marking-identification.rst',
-                '01-chip-identification/esp32s2/module-marking-identification.rst',
-                '01-chip-identification/esp32s2/efuse-field-identification.rst',
+                '03-errata-description/esp32s2/*.rst',
                 ]
-ESP32H2_DOCS = ['03-errata-description/esp32h2/*.rst',
+ESP32H2_DOCS = ['01-chip-identification/esp32h2/*.rst',
                 '02-errata-summary/esp32h2-errata-summary.rst',
-                '01-chip-identification/esp32h2/chip-marking-identification.rst',
-                '01-chip-identification/esp32h2/module-marking-identification.rst',
-                '01-chip-identification/esp32h2/efuse-field-identification.rst',
+                '03-errata-description/esp32h2/*.rst',
                 ]
-ESP32_DOCS = ['03-errata-description/esp32/*.rst',
+ESP32_DOCS = ['01-chip-identification/esp32/*.rst',
               '02-errata-summary/esp32-errata-summary.rst',
-              '01-chip-identification/esp32/chip-marking-identification.rst',
-              '01-chip-identification/esp32/module-marking-identification.rst',
-              '01-chip-identification/esp32/efuse-field-identification.rst',
+              '03-errata-description/esp32/*.rst',
               ]
 
 conditional_include_dict = {'esp32':ESP32_DOCS,
@@ -91,3 +79,69 @@ linkcheck_anchors = False
 
 # Measurement ID for Google Analytics
 google_analytics_id = ''
+
+# Configuration for sphinx_tags
+tags_create_tags = True
+tags_extension = ["rst"]
+tags_create_badges = True
+tags_badge_colors = {
+    "*": "secondary",
+}
+
+# Customized LaTeX configurations
+
+titlepage = ''
+with open('../_static/titlepage.tex') as f:
+    titlepage = f.read()
+
+latex_elements = {
+    'papersize': 'a4paper',
+
+    # Latex figure (float) alignment
+    'figure_align': 'H',
+
+    'pointsize': '10pt',
+
+    # Additional stuff for the LaTeX preamble.
+    'fncychap': '''
+\\usepackage[Sonny]{fncychap}
+    ''',
+
+    'preamble': preamble,
+
+    'maketitle': titlepage,
+
+    # Font configuration
+     'fontpkg': r'''
+    ''',
+    
+    # Remove empty pages after ToC and end of chapter
+    'extraclassoptions': 'openany,oneside',
+
+    # Set table header color
+    'sphinxsetup': r'''
+TableMergeColorHeader={gray!25},
+TableRowColorHeader={gray!25},
+TableRowColorOdd={white!0},
+TableRowColorEven={white!0},
+TableMergeColorOdd={white!0},
+TableMergeColorEven={white!0},
+noteBorderColor={RGB}{16, 32, 160},
+    ''',
+}
+
+# Start a document from Section instead of Chapter
+latex_docclass = {
+    'howto': 'article',
+    'manual': 'article',
+}
+
+latex_toplevel_sectioning = 'section'
+
+# Configure latex table style
+latex_table_style = ['colorrows']
+
+latex_logo = '../_static/esp-logo-standard-vertical.pdf'
+
+# Table, figure, and section numbering configurations
+numfig = True
