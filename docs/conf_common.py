@@ -9,6 +9,7 @@ extensions += ['sphinx_copybutton',
                # be registered by one extension before they can be
                # connected to another extension
                'esp_docs.esp_extensions.dummy_build_system',
+               'linuxdoc.rstFlatTable', #https://return42.github.io/linuxdoc/linuxdoc-howto/table-markup.html#flat-table
                ]
 
 ESP32C3_DOCS = ['03-errata-description/esp32c3/*.rst',
