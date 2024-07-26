@@ -17,6 +17,8 @@
       - Detailed bug descriptions, including conditions, expected behaviors and actual behaviors, causes, influences on users, workarounds, and solutions.
    - :doc:`_tags/tagsindex`
       - Classification of bug descriptions by chip revisions.
+   - :doc:`/revision-history/index`
+      - The release notes for this document.
 
    To switch to another chip, use the drop-down menu at the top left of the page.
 
