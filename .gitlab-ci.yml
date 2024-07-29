@@ -12,12 +12,12 @@ variables:
 .build_template:
   stage: build
   image: $ESP_DOCS_ENV_IMAGE
-  tags: 
+  tags:
     - build
   parallel:
     matrix:
       - DOCLANG: ["en", "zh_CN"]
-        DOCTGT: ["esp32", "esp32s3", "esp32c6", "esp32h2", "esp32c2", "esp32s2", "esp32c3"]
+        DOCTGT: ["esp32s3", "esp32c6", "esp32h2", "esp32c2", "esp32s2", "esp32c3"]
 
 build_errata_html:
   extends:
@@ -105,8 +105,6 @@ post_links:
   tags: [deploy_docs]
   image: $ESP_DOCS_ENV_IMAGE
   needs:
-    # - build_errata_html
-    # - build_errata_pdf
     - deploy_docs_preview
   rules:
     # Run for all changes to a merge request's source branch
@@ -116,25 +114,25 @@ post_links:
     - ls -al logs
     - python3 post-mr-note.py $GITLAB_MR_NOTE_TOKEN $CI_PROJECT_PATH $CI_MERGE_REQUEST_IID --url $GITLAB_URL
 
-# deploy_docs_production:
-#   extends:
-#     - .deploy_docs_template
-#   only:
-#     - master
-#   variables:
-#     TYPE: "production"
-#     DOCS_BUILD_DIR: "${CI_PROJECT_DIR}/docs/_build/"
-#     DOCS_DEPLOY_PRIVATEKEY: "$DOCS_PROD_DEPLOY_KEY"
-#     DOCS_DEPLOY_SERVER: "$DOCS_PROD_SERVER"
-#     DOCS_DEPLOY_SERVER_USER: "$DOCS_PROD_SERVER_USER"
-#     DOCS_DEPLOY_PATH: "$DOCS_PROD_PATH"
-#     DOCS_DEPLOY_URL_BASE: "https://docs.espressif.com/projects/esp-chip-errata"
-#   script:
-#     - source ${CI_PROJECT_DIR}/ci/utils.sh
-#     - add_doc_server_ssh_keys $DOCS_DEPLOY_PRIVATEKEY $DOCS_DEPLOY_SERVER $DOCS_DEPLOY_SERVER_USER
-#     - export GIT_VER=$(git describe --always)
-#     - pip install -r ${CI_PROJECT_DIR}/docs/requirements.txt
-#     - deploy-docs
+deploy_docs_production:
+  extends:
+    - .deploy_docs_template
+  only:
+    - master
+  variables:
+    TYPE: "production"
+    DOCS_BUILD_DIR: "${CI_PROJECT_DIR}/docs/_build/"
+    DOCS_DEPLOY_PRIVATEKEY: "$DOCS_PROD_DEPLOY_KEY"
+    DOCS_DEPLOY_SERVER: "$DOCS_PROD_SERVER"
+    DOCS_DEPLOY_SERVER_USER: "$DOCS_PROD_SERVER_USER"
+    DOCS_DEPLOY_PATH: "$DOCS_PROD_PATH"
+    DOCS_DEPLOY_URL_BASE: "https://docs.espressif.com/projects/esp-chip-errata"
+  script:
+    - source ${CI_PROJECT_DIR}/ci/utils.sh
+    - add_doc_server_ssh_keys $DOCS_DEPLOY_PRIVATEKEY $DOCS_DEPLOY_SERVER $DOCS_DEPLOY_SERVER_USER
+    - export GIT_VER=$(git describe --always)
+    - pip install -r ${CI_PROJECT_DIR}/docs/requirements.txt
+    - deploy-docs
 
 check_doc_links:
   stage: check
@@ -154,7 +152,7 @@ check_doc_links:
   parallel:
     matrix:
       - DOCLANG: ["en", "zh_CN"]
-        DOCTGT: ["esp32", "esp32s2", "esp32s3", "esp32c3", "esp32c6", "esp32h2", "esp32c2"]
+        DOCTGT: ["esp32s2", "esp32s3", "esp32c3", "esp32c6", "esp32h2", "esp32c2"]
 
 check_line_num:
   image: python:3.8
@@ -209,3 +207,18 @@ translate_updated:
     - echo $CI_COMMIT_REF_NAME
     - python3 ./auto-translate/translate_rst_files.py $OPENAI_API_KEY $GITLAB_URL $TRANS_BOT_TOKEN $PROJECT_ID $CI_COMMIT_REF_NAME -a
     - echo "Translation completed"
+
+# check_format:
+#   stage: check
+#   image: $ESP_DOCS_ENV_IMAGE
+#   tags:  [host_test]
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
+#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
+#   script:
+#     - git clone -b new_check_format $SCRIPTS_REPO
+#     - python3 tools/check_rst_format_mr_files.py
+#   variables:
+#       GIT_STRATEGY: fetch
+#       GIT_DEPTH: 0
+#       allow_failure: true

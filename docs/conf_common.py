@@ -3,7 +3,7 @@
 from esp_docs.conf_docs import *  # noqa: F403,F401
 
 languages = ['en', 'zh_CN']
-idf_targets = ['esp32', 'esp32s2', 'esp32s3', 'esp32c3', 'esp32c6', 'esp32h2', 'esp32c2']
+idf_targets = ['esp32s2', 'esp32s3', 'esp32c3', 'esp32c6', 'esp32h2', 'esp32c2']
 extensions += ['sphinx_copybutton',
                # Note: order is important here, events must
                # be registered by one extension before they can be
@@ -31,6 +31,7 @@ ESP32S3_DOCS = ['01-chip-identification/esp32s3/*.rst',
                 '03-errata-description/shared/sar-adc-adc2-not-work.rst',
                 '03-errata-description/shared/rmt-idle-level-cannot-be-controlled.rst',
                 '03-errata-description/shared/tchsen-scan-done-int-raw-data-undefined.rst',
+                '03-errata-description/shared/rtc-reg-read-error-from-light-sleep.rst',
                 'revision-history/esp32s3-revision-history.rst',
                 ]
 ESP32C6_DOCS = ['01-chip-identification/esp32c6/*.rst',
@@ -44,6 +45,8 @@ ESP32C6_DOCS = ['01-chip-identification/esp32c6/*.rst',
 ESP32S2_DOCS = ['01-chip-identification/esp32s2/*.rst',
                 '02-errata-summary/esp32s2-errata-summary.rst',
                 '03-errata-description/esp32s2/*.rst',
+                '03-errata-description/shared/tchsen-scan-done-int-raw-data-undefined.rst',
+                '03-errata-description/shared/rtc-reg-read-error-from-light-sleep.rst',
                 'revision-history/esp32s2-revision-history.rst',
                 ]
 ESP32H2_DOCS = ['01-chip-identification/esp32h2/*.rst',
@@ -53,14 +56,8 @@ ESP32H2_DOCS = ['01-chip-identification/esp32h2/*.rst',
                 '03-errata-description/shared/cpu-load-store.rst',
                 'revision-history/esp32h2-revision-history.rst',
                 ]
-ESP32_DOCS = ['01-chip-identification/esp32/*.rst',
-              '02-errata-summary/esp32-errata-summary.rst',
-              '03-errata-description/esp32/*.rst',
-              'revision-history/esp32-revision-history.rst',
-              ]
 
-conditional_include_dict = {'esp32':ESP32_DOCS,
-                            'esp32c2':ESP32C2_DOCS,
+conditional_include_dict = {'esp32c2':ESP32C2_DOCS,
                             'esp32c3':ESP32C3_DOCS,
                             'esp32c6':ESP32C6_DOCS,
                             'esp32s2':ESP32S2_DOCS,
@@ -89,8 +86,8 @@ pdf_file_prefix = u'esp-chip-errata'
 # disable the check for link anchors
 linkcheck_anchors = False
 
-# Measurement ID for Google Analytics
-google_analytics_id = ''
+# Tracing ID for Google Analytics
+google_analytics_id = 'G-EEZFY8D6CS'
 
 # Configuration for sphinx_tags
 tags_create_tags = True
@@ -121,7 +118,7 @@ with open('../_static/titlepage.tex') as f:
 preamble_extra = r'''
 % ToC
 \makeatletter
-\renewcommand{\l@section}[2]{\vspace{14pt}\@dottedtocline{2}{0pt}{30pt}{\LARGE\bfseries\textcolor{LochmaraColor}{#1}}{#2}} 
+\renewcommand{\l@section}[2]{\vspace{14pt}\@dottedtocline{2}{0pt}{30pt}{\LARGE\bfseries\textcolor{LochmaraColor}{#1}}{#2}}
 \renewcommand{\l@subsection}[2]{\@dottedtocline{2}{0pt}{30pt}{\textcolor{LochmaraColor}{#1}}{#2}}
 \renewcommand{\@dotsep}{10000}
 \makeatother
