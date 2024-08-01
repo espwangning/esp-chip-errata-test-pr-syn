@@ -44,3 +44,28 @@
             {IDF_TARGET_PATH_NAME}/sar-adc-access-dma
             {IDF_TARGET_PATH_NAME}/sar-adc-missing-lower-four-bits
             {IDF_TARGET_PATH_NAME}/wifi-ftm
+
+.. only:: esp32s3
+
+    .. only:: html
+
+        .. include:: {IDF_TARGET_PATH_NAME}/rtc-reg-read-error-from-light-sleep.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/analog-power-config-might-damage-chip.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/lcd-equ-sysclk-issue.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/usb-otg-download-func-bug.rst
+        .. include:: shared/rmt-idle-level-cannot-be-controlled.rst
+        .. include:: shared/tchsen-scan-done-int-raw-data-undefined.rst
+        .. include:: shared/sar-adc-adc2-not-work.rst
+
+    .. only:: latex
+
+        .. toctree::
+            :hidden:
+
+            {IDF_TARGET_PATH_NAME}/rtc-reg-read-error-from-light-sleep
+            {IDF_TARGET_PATH_NAME}/analog-power-config-might-damage-chip
+            {IDF_TARGET_PATH_NAME}/lcd-equ-sysclk-issue
+            {IDF_TARGET_PATH_NAME}/usb-otg-download-func-bug
+            shared/rmt-idle-level-cannot-be-controlled
+            shared/tchsen-scan-done-int-raw-data-undefined
+            shared/sar-adc-adc2-not-work
