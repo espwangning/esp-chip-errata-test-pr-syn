@@ -1,0 +1,9 @@
+specified_files:  
+  - docs/en/glossary.rst
+  
+target_language: EN-CN  
+  
+trans_dict:  
+  pin: 管脚
+
+target_language_folder: ./
