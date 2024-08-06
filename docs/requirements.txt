@@ -2,5 +2,4 @@ git+https://github.com/espwangning/esp-docs-for-errata.git #Temporary workaround
 urllib3
 python-gitlab
 linuxdoc==20210324
-sphinx-tags==0.4.0
 sphinx-design

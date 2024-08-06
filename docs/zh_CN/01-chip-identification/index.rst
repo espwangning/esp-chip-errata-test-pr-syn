@@ -92,7 +92,7 @@ eFuse 位
 ESP-IDF 支持版本
 ----------------
 
-关于特定芯片版本的 ESP-IDF 支持版本，清参考 `ESP-IDF 版本与乐鑫芯片版本兼容性 <https://github.com/espressif/esp-idf/blob/master/COMPATIBILITY_CN.md>`__。
+关于特定芯片版本的 ESP-IDF 支持版本，请参考 `ESP-IDF 版本与乐鑫芯片版本兼容性 <https://github.com/espressif/esp-idf/blob/master/COMPATIBILITY_CN.md>`__。
 
 
 相关文档
