@@ -1,5 +1,5 @@
 .. flat-table:: Errata summary
-   :header-rows: 1
+   :header-rows: 2
    :widths: 1 6 1 1 1
 
    * - :rspan:`1` Category
