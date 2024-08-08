@@ -69,3 +69,20 @@
             shared/rmt-idle-level-cannot-be-controlled
             shared/tchsen-scan-done-int-raw-data-undefined
             shared/sar-adc-adc2-not-work
+
+.. only:: esp32h2
+
+    .. only:: html
+
+        .. include:: shared/cpu-load-store.rst
+        .. include:: shared/clock-rc-fast-clk-inaccurate.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/adc1-unavailable-channel-4.rst
+
+    .. only:: latex
+
+        .. toctree::
+            :hidden:
+
+            shared/cpu-load-store
+            shared/clock-rc-fast-clk-inaccurate
+            {IDF_TARGET_PATH_NAME}/adc1-unavailable-channel-4
