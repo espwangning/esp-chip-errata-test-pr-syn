@@ -10,7 +10,7 @@ extensions += ['sphinx_copybutton',
                # connected to another extension
                'esp_docs.esp_extensions.dummy_build_system',
                'linuxdoc.rstFlatTable', #https://return42.github.io/linuxdoc/linuxdoc-howto/table-markup.html#flat-table
-               'sphinx_tags', #https://sphinx-tags.readthedocs.io/en/latest/quickstart.html
+               'sphinx-tags', # Fine-tuned for this project based on https://sphinx-tags.readthedocs.io/en/latest/quickstart.html
                'sphinx_design', #https://sphinx-design.readthedocs.io/en/latest/get_started.html
                ]
 
