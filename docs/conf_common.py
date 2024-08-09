@@ -98,38 +98,47 @@ tags_badge_colors = {
     "*": "secondary",
 }
 
-# Customized LaTeX configurations
+# Table, figure, and section numbering configurations
+numfig = True
 
+# --- Customized LaTeX configurations ----------------
+
+# Customized titlepage
 titlepage = ''
 with open('../_static/titlepage.tex') as f:
     titlepage = f.read()
 
-latex_elements = {
-    'papersize': 'a4paper',
+# Additional configurations added to the preamble
+# Add the following code to 'preamble_extra' if you want to add watermark to the PDF
+# \definecolor{watermark}{rgb}{0.83, 0.83, 0.83}
+# \usepackage{draftwatermark}
+# \SetWatermarkAngle{45}
+# \SetWatermarkColor{watermark}
+# \SetWatermarkFontSize{3.5cm}
+# \SetWatermarkText{CONFIDENTIAL}
+preamble_extra = r'''
+% ToC
+\makeatletter
+\renewcommand{\l@section}[2]{\vspace{14pt}\@dottedtocline{2}{0pt}{30pt}{\LARGE\bfseries\textcolor{LochmaraColor}{#1}}{#2}} 
+\renewcommand{\l@subsection}[2]{\@dottedtocline{2}{0pt}{30pt}{\textcolor{LochmaraColor}{#1}}{#2}}
+\renewcommand{\@dotsep}{10000}
+\makeatother
 
-    # Latex figure (float) alignment
-    'figure_align': 'H',
+% Line spacing
+\linespread{1.3}
 
-    'pointsize': '10pt',
+% Make text left-aligned
+\raggedright
+'''
 
-    # Additional stuff for the LaTeX preamble.
-    'fncychap': '''
-\\usepackage[Sonny]{fncychap}
-    ''',
+# LaTeX Figure alignment
+latex_elements['figure_align'] = 'H'
 
-    'preamble': preamble,
+# Remove empty pages after ToC and end of chapter
+latex_elements['extraclassoptions'] = 'openany,oneside'
 
-    'maketitle': titlepage,
-
-    # Font configuration
-     'fontpkg': r'''
-    ''',
-    
-    # Remove empty pages after ToC and end of chapter
-    'extraclassoptions': 'openany,oneside',
-
-    # Set table header color
-    'sphinxsetup': r'''
+# Set table header and tiplisting color
+latex_elements['sphinxsetup'] = r'''
 TableMergeColorHeader={gray!25},
 TableRowColorHeader={gray!25},
 TableRowColorOdd={white!0},
@@ -137,21 +146,22 @@ TableRowColorEven={white!0},
 TableMergeColorOdd={white!0},
 TableMergeColorEven={white!0},
 noteBorderColor={RGB}{16, 32, 160},
-    ''',
-}
+'''
 
-# Start a document from Section instead of Chapter
+# Use customized titlepage with version number
+latex_elements['maketitle'] = titlepage
+
+# Set document class
 latex_docclass = {
     'howto': 'article',
     'manual': 'article',
 }
 
+# Start a document from Section instead of Chapter
 latex_toplevel_sectioning = 'section'
 
 # Configure latex table style
 latex_table_style = ['colorrows']
 
+# Set the path of the logo \sphinxlogo used in the titlepage
 latex_logo = '../_static/esp-logo-standard-vertical.pdf'
-
-# Table, figure, and section numbering configurations
-numfig = True
