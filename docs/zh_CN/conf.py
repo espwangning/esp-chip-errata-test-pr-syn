@@ -47,3 +47,28 @@ numfig_format = {
     'figure': '图 %s',
     'table': '表 %s',
 }
+
+# ----------------- Chinese-specific LaTeX configurations -----------------
+
+cn_footer_toc_config = r'''
+% Header and footer
+\makeatletter
+  \fancypagestyle{normal}{
+    \fancyhf{}
+    \fancyhead[L]{\nouppercase{\leftmark}}
+    \fancyfoot[C]{\py@HeaderFamily\thepage \\ \href{https://www.espressif.com/en/company/documents/documentation_feedback?docId=\DocId&sections=&version=\VersionNum}{提交文档反馈}}
+    \fancyfoot[L]{乐鑫信息科技}
+    \fancyfoot[R]{{\idfTarget}{\@title}{\VersionNum}}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+  }
+\makeatother
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% ToC
+\addto\captionsenglish{\renewcommand{\contentsname}{目录}}
+'''
+
+latex_elements['preamble'] = preamble + cn_footer_toc_config + preamble_extra
