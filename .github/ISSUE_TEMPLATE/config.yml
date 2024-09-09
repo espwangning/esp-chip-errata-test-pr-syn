@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: ESP Chip Errata
+    url: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32s2/index.html
+    about: Switch between chips by clicking the drop-down menu at the top left of the page
+  - name: Related documentation and resources
+    url: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32s2/resources.html
+    about: Switch between chips by clicking the drop-down menu at the top left of the page
