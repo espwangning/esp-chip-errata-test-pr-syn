@@ -24,9 +24,17 @@ Primary Identification Methods
 eFuse Bits
 ++++++++++
 
-The chip revision is encoded using two eFuse fields:
+.. only:: not esp32
 
-.. include:: ./{IDF_TARGET_PATH_NAME}/efuse-field-identification.rst
+    The chip revision is encoded using two eFuse fields:
+
+    .. include:: ./{IDF_TARGET_PATH_NAME}/efuse-field-identification.rst
+
+.. only:: esp32
+
+    The chip revision is encoded using four eFuse fields:
+
+    .. include:: ./{IDF_TARGET_PATH_NAME}/efuse-field-identification.rst
 
 Chip Marking
 ++++++++++++

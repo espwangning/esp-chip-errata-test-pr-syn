@@ -24,9 +24,17 @@
 eFuse 位
 ++++++++
 
-芯片版本使用两个 eFuse 字段编码：
+.. only:: not esp32
 
-.. include:: ./{IDF_TARGET_PATH_NAME}/efuse-field-identification.rst
+    芯片版本使用两个 eFuse 字段编码：
+
+    .. include:: ./{IDF_TARGET_PATH_NAME}/efuse-field-identification.rst
+
+.. only:: esp32
+
+    芯片版本使用四个 eFuse 字段编码：
+
+    .. include:: ./{IDF_TARGET_PATH_NAME}/efuse-field-identification.rst
 
 芯片标识
 ++++++++

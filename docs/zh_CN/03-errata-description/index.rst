@@ -129,3 +129,78 @@
             shared/rtc-reg-read-error-from-light-sleep
             shared/tchsen-scan-done-int-raw-data-undefined
             {IDF_TARGET_PATH_NAME}/tchsen-scan-done-int-occurs-twice
+
+.. only:: esp32
+
+    .. only:: html
+
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-crash-of-cpu-when-clock-frequency-switches.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-limitations-when-accessing-peripherals.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-limited-access-to-address-spaces.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-read-and-write-errors-related-to-access-sequence.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-read-and-write-errors-using-cache.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-read-error-of-dual-core-cpu.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-subsequent-access-halted-when-get-interrupted.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/cpu-writes-lost.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/ulp-and-touch-sensors-cannot-be-used.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/gpio-control-of-gpio-resistors-via-registers.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/gpio-edge-interrupts.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/gpio-inputs-pulled-down.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/reset-bor-function-fails.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/reset-spurious-watchdog-reset.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/reset-watchdog-reset-due-to-flash-startup-time.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/clock-limited-audio-pll-frequency-range.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/clock-rmii-clock-when-using-ethernet-and-wifi.rst
+        .. include:: shared/rtc-reg-read-error-from-light-sleep.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/watchdog-issue-caused-by-live-lock.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/uart-fifo-cnt-indicates-data-length-incorrectly.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-dominant-bit-not-interpreted-as-sof.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-erroneous-message-transmits.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-error-passive-state-not-entered.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-error-status-bit-not-frozen.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-invalid-received-data-frame.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-negative-phase-error.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-rec-change.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-rx-fifo-overruns.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-suspend-transmission.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-tec-value-not-increased.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/twai-transmit-interrupt-lost.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/ledc-duty-overflow-error.rst
+
+    .. only:: latex
+
+        .. toctree::
+            :hidden:
+
+            {IDF_TARGET_PATH_NAME}/cpu-crash-of-cpu-when-clock-frequency-switches
+            {IDF_TARGET_PATH_NAME}/cpu-limitations-when-accessing-peripherals
+            {IDF_TARGET_PATH_NAME}/cpu-limited-access-to-address-spaces
+            {IDF_TARGET_PATH_NAME}/cpu-read-and-write-errors-related-to-access-sequence
+            {IDF_TARGET_PATH_NAME}/cpu-read-and-write-errors-using-cache
+            {IDF_TARGET_PATH_NAME}/cpu-read-error-of-dual-core-cpu
+            {IDF_TARGET_PATH_NAME}/cpu-subsequent-access-halted-when-get-interrupted
+            {IDF_TARGET_PATH_NAME}/cpu-writes-lost
+            {IDF_TARGET_PATH_NAME}/ulp-and-touch-sensors-cannot-be-used
+            {IDF_TARGET_PATH_NAME}/gpio-control-of-gpio-resistors-via-registers
+            {IDF_TARGET_PATH_NAME}/gpio-edge-interrupts
+            {IDF_TARGET_PATH_NAME}/gpio-inputs-pulled-down
+            {IDF_TARGET_PATH_NAME}/reset-bor-function-fails
+            {IDF_TARGET_PATH_NAME}/reset-spurious-watchdog-reset
+            {IDF_TARGET_PATH_NAME}/reset-watchdog-reset-due-to-flash-startup-time
+            {IDF_TARGET_PATH_NAME}/clock-limited-audio-pll-frequency-range
+            {IDF_TARGET_PATH_NAME}/clock-rmii-clock-when-using-ethernet-and-wifi
+            shared/rtc-reg-read-error-from-light-sleep
+            {IDF_TARGET_PATH_NAME}/watchdog-issue-caused-by-live-lock
+            {IDF_TARGET_PATH_NAME}/uart-fifo-cnt-indicates-data-length-incorrectly
+            {IDF_TARGET_PATH_NAME}/twai-dominant-bit-not-interpreted-as-sof
+            {IDF_TARGET_PATH_NAME}/twai-erroneous-message-transmits
+            {IDF_TARGET_PATH_NAME}/twai-error-passive-state-not-entered
+            {IDF_TARGET_PATH_NAME}/twai-error-status-bit-not-frozen
+            {IDF_TARGET_PATH_NAME}/twai-invalid-received-data-frame
+            {IDF_TARGET_PATH_NAME}/twai-negative-phase-error
+            {IDF_TARGET_PATH_NAME}/twai-rec-change
+            {IDF_TARGET_PATH_NAME}/twai-rx-fifo-overruns
+            {IDF_TARGET_PATH_NAME}/twai-suspend-transmission
+            {IDF_TARGET_PATH_NAME}/twai-tec-value-not-increased
+            {IDF_TARGET_PATH_NAME}/twai-transmit-interrupt-lost
+            {IDF_TARGET_PATH_NAME}/ledc-duty-overflow-error

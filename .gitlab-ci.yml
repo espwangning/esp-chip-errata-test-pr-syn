@@ -17,7 +17,7 @@ variables:
   parallel:
     matrix:
       - DOCLANG: ["en", "zh_CN"]
-        DOCTGT: ["esp32s3", "esp32c6", "esp32h2", "esp32c2", "esp32s2", "esp32c3"]
+        DOCTGT: ["esp32s3", "esp32c6", "esp32h2", "esp32c2", "esp32s2", "esp32c3", "esp32"]
 
 build_errata_html:
   extends:
@@ -152,7 +152,7 @@ check_doc_links:
   parallel:
     matrix:
       - DOCLANG: ["en", "zh_CN"]
-        DOCTGT: ["esp32s2", "esp32s3", "esp32c3", "esp32c6", "esp32h2", "esp32c2"]
+        DOCTGT: ["esp32s2", "esp32s3", "esp32c3", "esp32c6", "esp32h2", "esp32c2", "esp32"]
 
 check_line_num:
   image: python:3.8
