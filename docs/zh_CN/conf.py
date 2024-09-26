@@ -56,7 +56,7 @@ cn_footer_toc_config = r'''
   \fancypagestyle{normal}{
     \fancyhf{}
     \fancyhead[L]{\nouppercase{\leftmark}}
-    \fancyfoot[C]{\py@HeaderFamily\thepage \\ \href{https://www.espressif.com/en/company/documents/documentation_feedback?docId=\DocId&sections=&version=\VersionNum}{提交文档反馈}}
+    \fancyfoot[C]{\py@HeaderFamily\thepage \\ \href{https://www.espressif.com/zh-hans/company/documents/documentation_feedback?docId=\DocId&sections=&version=\VersionNum}{提交文档反馈}}
     \fancyfoot[L]{乐鑫信息科技}
     \fancyfoot[R]{{\idfTarget}{\@title}{\VersionNum}}
     \renewcommand{\headrulewidth}{0.4pt}
