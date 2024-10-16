@@ -8,6 +8,7 @@ body:
       label: Document title
       multiple: false
       options:
+        - ESP32 Series SoC Errata
         - ESP32-S2 Series SoC Errata
         - ESP32-S3 Series SoC Errata
         - ESP32-C3 Series SoC Errata
@@ -39,7 +40,7 @@ body:
     attributes:
       label: Section
       description: Which section has this issue?
-      placeholder: [Clock] Inaccurate Calibration of RC_FAST_CLK Clock
+      placeholder: Inaccurate Calibration of RC_FAST_CLK Clock
     validations:
       required: true
   - type: textarea
