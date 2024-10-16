@@ -2,6 +2,7 @@
 
 esp-chip-errata 仓库包含以下勘误表，记录了芯片已知的错误及解决方法：
 
+- [ESP32 系列芯片勘误表](https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32/index.html)
 - [ESP32-S2 系列芯片勘误表](https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32s2/index.html)
 - [ESP32-C3 系列芯片勘误表](https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32c3/index.html)
 - [ESP32-S3 系列芯片勘误表](https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32s3/index.html)

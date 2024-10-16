@@ -2,6 +2,7 @@
 
 The esp-chip-errata repository hosts the following errata, which documents the known errors in SoCs and the solutions to solve the errors:
 
+- [ESP32 Series SoC Errata](https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32/index.html)
 - [ESP32-S2 Series SoC Errata](https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32s2/index.html)
 - [ESP32-C3 Series SoC Errata](https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32c3/index.html)
 - [ESP32-S3 Series SoC Errata](https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32s3/index.html)
