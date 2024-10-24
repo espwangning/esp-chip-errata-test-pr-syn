@@ -24,6 +24,7 @@ All Errata Descriptions
 
         .. include:: shared/cpu-load-store.rst
         .. include:: shared/clock-rc-fast-clk-inaccurate.rst
+        .. include:: {IDF_TARGET_PATH_NAME}/clock-rc32k-not-oscillate.rst
         .. include:: {IDF_TARGET_PATH_NAME}/reset-rwdt-reset.rst
         .. include:: {IDF_TARGET_PATH_NAME}/spi-auto-suspend.rst
         .. include:: shared/rmt-idle-level-cannot-be-controlled.rst
@@ -38,6 +39,7 @@ All Errata Descriptions
 
             shared/cpu-load-store
             shared/clock-rc-fast-clk-inaccurate
+            {IDF_TARGET_PATH_NAME}/clock-rc32k-not-oscillate
             {IDF_TARGET_PATH_NAME}/reset-rwdt-reset
             {IDF_TARGET_PATH_NAME}/spi-auto-suspend
             shared/rmt-idle-level-cannot-be-controlled

@@ -5,7 +5,11 @@
    * - Date
      - Version
      - Release Notes
-   * - 2024-08-
+   * - 2025-03-19
+     - v1.2
+     -  - :doc:`/03-errata-description/index`
+          - Added Section :doc:`/03-errata-description/esp32c6/clock-rc32k-not-oscillate`
+   * - 2024-08-13
      - v1.1
      -  - :doc:`/01-chip-identification/index`
             - Added information about chip revision v0.2

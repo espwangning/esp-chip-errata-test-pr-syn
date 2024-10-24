@@ -15,12 +15,17 @@
      - Y
      - Y
      -
-   * - Clock
+   * - :rspan:`1` Clock
      - CLK-6996
      - :doc:`/03-errata-description/shared/clock-rc-fast-clk-inaccurate`
      - Y
      - 
      - 
+   * - CLK-8588
+     - :doc:`/03-errata-description/esp32c6/clock-rc32k-not-oscillate`
+     - Y
+     - Y
+     - Y
    * - Reset
      - RES-7080
      - :doc:`/03-errata-description/esp32c6/reset-rwdt-reset`
