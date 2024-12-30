@@ -5,6 +5,9 @@
    * - Date
      - Version
      - Release Notes
+   * - 2025-03-31
+     - v1.3
+     - Added Section :doc:`/03-errata-description/esp32s3/cache-hit-error-during-writeback`
    * - 2023-11-15
      - v1.2
      - - :doc:`/01-chip-identification/index`

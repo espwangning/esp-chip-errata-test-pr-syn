@@ -51,6 +51,7 @@ All Errata Descriptions
 
     .. only:: html
 
+        .. include:: {IDF_TARGET_PATH_NAME}/cache-hit-error-during-writeback.rst
         .. include:: shared/rtc-reg-read-error-from-light-sleep.rst
         .. include:: {IDF_TARGET_PATH_NAME}/analog-power-config-might-damage-chip.rst
         .. include:: {IDF_TARGET_PATH_NAME}/lcd-equ-sysclk-issue.rst
@@ -64,6 +65,7 @@ All Errata Descriptions
         .. toctree::
             :hidden:
 
+            {IDF_TARGET_PATH_NAME}/cache-hit-error-during-writeback
             shared/rtc-reg-read-error-from-light-sleep
             {IDF_TARGET_PATH_NAME}/analog-power-config-might-damage-chip
             {IDF_TARGET_PATH_NAME}/lcd-equ-sysclk-issue

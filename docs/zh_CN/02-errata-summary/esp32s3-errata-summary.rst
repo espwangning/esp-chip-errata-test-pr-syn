@@ -9,6 +9,12 @@
    * - v0.0
      - v0.1
      - v0.2
+   * - cache
+     - CACHE-126
+     - :doc:`/03-errata-description/esp32s3/cache-hit-error-during-writeback`
+     - Y
+     - Y
+     - Y
    * - RTC
      - RTC-126
      - :doc:`/03-errata-description/shared/rtc-reg-read-error-from-light-sleep`
