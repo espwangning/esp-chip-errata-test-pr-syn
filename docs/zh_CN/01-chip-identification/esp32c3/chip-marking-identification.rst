@@ -4,7 +4,7 @@
     :align: center
 
     * - 芯片版本
-      - Main Die
+      - Espressif Tracking Information
     * - v0.0
       - X ``A`` XXXXXXXX
     * - v0.1

@@ -5,6 +5,10 @@
    * - Date
      - Version
      - Release Notes
+   * - 2025-01-02
+     - v1.2
+     -  - :doc:`/01-chip-identification/index`
+            - Added information about chip revision v1.2 and v2.0
    * - 2023-08-17
      - v1.1
      -  - :doc:`/01-chip-identification/index`
