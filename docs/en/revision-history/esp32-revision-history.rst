@@ -5,6 +5,9 @@
    * - Date
      - Version
      - Release Notes
+   * - 2025-01-03
+     - v2.9
+     - - Updated Section :doc:`/03-errata-description/esp32/ulp-and-touch-sensors-cannot-be-used`
    * - 2024-07-29
      - v2.8
      - - Added Section :doc:`/03-errata-description/esp32/clock-rmii-clock-when-using-ethernet-and-wifi`
