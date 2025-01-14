@@ -35,4 +35,3 @@
 *.sh                                                            @documentation/codeowners/esp-chip-errata
 *.yml                                                           @documentation/codeowners/esp-chip-errata
 requirements.txt                                                @documentation/codeowners/esp-chip-errata
-*                                                               @documentation/codeowners/esp-chip-errata
