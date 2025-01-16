@@ -4,7 +4,7 @@
     :align: center
 
     * - Chip Revision
-      - Main Die
+      - Espressif Tracking Information
     * - v0.0
       - X ``A`` XXXXXXXX
     * - v0.1
