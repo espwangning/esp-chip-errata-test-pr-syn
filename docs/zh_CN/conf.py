@@ -56,9 +56,9 @@ cn_footer_toc_config = r'''
   \fancypagestyle{normal}{
     \fancyhf{}
     \fancyhead[L]{\nouppercase{\leftmark}}
-    \fancyfoot[C]{\py@HeaderFamily\thepage \\ \href{https://www.espressif.com/zh-hans/company/documents/documentation_feedback?docId=\DocId&sections=&version=\VersionNum}{提交文档反馈}}
+    \fancyfoot[C]{\py@HeaderFamily\thepage \\ \href{https://www.espressif.com/zh-hans/company/documents/documentation_feedback?docId=\DocId&sections=&version=\docversion}{提交文档反馈}}
     \fancyfoot[L]{乐鑫信息科技}
-    \fancyfoot[R]{{\idfTarget}{\@title}{\VersionNum}}
+    \fancyfoot[R]{{\idfTarget}{\@title}{\docversion{}}}
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0.4pt}
   }
@@ -70,5 +70,24 @@ cn_footer_toc_config = r'''
 % ToC
 \addto\captionsenglish{\renewcommand{\contentsname}{目录}}
 '''
+
+# Get Current Target
+def conf_setup(app, config):
+    print("Current target:", config.idf_target)
+
+    # Get the version number
+    doc_version = version_num.get(config.idf_target, 'Unknown Version')
+    print("Doc version:", doc_version)
+    
+    # Dynamically update the LaTeX preamble
+    doc_version_config = '''
+    %% Version number
+    \\newcommand{{\\docversion}}{{{}}}
+    '''.format(doc_version)  # Format doc_version here
+
+    # Update the preamble with the version info
+    config.latex_elements['preamble'] += doc_version_config
+
+user_setup_callback = conf_setup
 
 latex_elements['preamble'] = preamble + cn_footer_toc_config + preamble_extra
