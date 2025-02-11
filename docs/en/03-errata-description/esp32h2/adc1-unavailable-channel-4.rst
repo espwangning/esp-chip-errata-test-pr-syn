@@ -20,4 +20,4 @@ Use other channels instead of ADC1_CH4.
 Solution
 ^^^^^^^^
 
-To be fixed in the :bdg-warning:`next chip revision`.
+Fixed in chip revision :bdg-success:`v1.2`.

@@ -13,6 +13,12 @@
 
       v0.0, v0.1, v0.2
 
+.. only:: esp32h2
+
+   .. tags::
+
+      v0.0, v0.1
+
 描述
 ^^^^
 
@@ -23,13 +29,22 @@
 变通方法
 ^^^^^^^^
 
-{IDF_TARGET_SUPPORT_VERSION:default="",esp32s3="v5.0",esp32c6="v5.1"}
+{IDF_TARGET_SUPPORT_VERSION:default="",esp32s3="v5.0",esp32c6="v5.1",esp32h2="v5.1"}
 
 建议用户置位 RMT_IDLE_OUT_EN_CHn，从而仅使用寄存器来控制空闲状态的信号电平。
 
 从首个支持持续发送模式的 ESP-IDF 版本 ({IDF_TARGET_SUPPORT_VERSION}) 开始已自动绕过该问题。在这些版本的 ESP-IDF 中，空闲状态的信号电平只能由寄存器控制。
 
-解决方案
-^^^^^^^^
+.. only:: not esp32h2
 
-:bdg-warning:`暂无` 修复计划。
+   解决方案
+   ^^^^^^^^
+
+   :bdg-warning:`暂无` 修复计划。
+
+.. only:: esp32h2
+
+   解决方案
+   ^^^^^^^^
+
+   已在芯片版本 :bdg-success:`v1.2` 中修复。

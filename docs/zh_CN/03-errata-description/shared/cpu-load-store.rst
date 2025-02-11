@@ -42,4 +42,4 @@ HP CPU 从 LP SRAM 取指运行时，若依次执行的两条指令 A 和 B 满�
 
 .. only:: esp32h2
 
-   预计将在 :bdg-warning:`后续芯片版本` 中修复。
+   已在芯片版本 :bdg-success:`v1.2` 中修复。
