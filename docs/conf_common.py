@@ -53,6 +53,7 @@ ESP32H2_DOCS = ['01-chip-identification/esp32h2/*.rst',
                 '02-errata-summary/esp32h2-errata-summary.rst',
                 '03-errata-description/esp32h2/*.rst',
                 '03-errata-description/shared/clock-rc-fast-clk-inaccurate.rst',
+                '03-errata-description/shared/rmt-idle-level-cannot-be-controlled.rst',
                 '03-errata-description/shared/cpu-load-store.rst',
                 'revision-history/esp32h2-revision-history.rst',
                 ]

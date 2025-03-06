@@ -9,3 +9,5 @@
       - X ``A`` XXXXXXXX
     * - v0.1
       - X ``B`` XXXXXXXX
+    * - v1.2
+      - X ``F`` XXXXXXXX

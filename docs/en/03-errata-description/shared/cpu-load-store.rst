@@ -43,4 +43,4 @@ Solution
 
 .. only:: esp32h2
 
-   To be fixed in the :bdg-warning:`future chip revisions`.
+   Fixed in chip revision :bdg-success:`v1.2`.

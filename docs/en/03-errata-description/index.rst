@@ -74,9 +74,19 @@ All Errata Descriptions
 
     .. only:: html
 
-        .. include:: shared/cpu-load-store.rst
-        .. include:: shared/clock-rc-fast-clk-inaccurate.rst
-        .. include:: {IDF_TARGET_PATH_NAME}/adc1-unavailable-channel-4.rst
+        .. include:: ./shared/cpu-load-store.rst
+        .. include:: ./shared/clock-rc-fast-clk-inaccurate.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/adc1-unavailable-channel-4.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/sar-adc-missing-lower-four-bits.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/i2c-fail-in-multiple-reads-operation.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/spi-auto-suspend.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/ledc-unable-to-rearch-100%-duty-cycle.rst    
+        .. include:: ./shared/rmt-idle-level-cannot-be-controlled.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/accidentally-enter-usb-boot-mode.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/aes-cpa-attack.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/ecc-timing-attack.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/tx-power-lower-than-expected.rst
+        .. include:: ./{IDF_TARGET_PATH_NAME}/pcnt-fail-to-trigger-step-interrupt.rst
 
     .. only:: latex
 
@@ -86,6 +96,16 @@ All Errata Descriptions
             shared/cpu-load-store
             shared/clock-rc-fast-clk-inaccurate
             {IDF_TARGET_PATH_NAME}/adc1-unavailable-channel-4
+            {IDF_TARGET_PATH_NAME}/sar-adc-missing-lower-four-bits
+            ./{IDF_TARGET_PATH_NAME}/i2c-fail-in-multiple-reads-operation.rst
+            ./{IDF_TARGET_PATH_NAME}/spi-auto-suspend.rst
+            ./{IDF_TARGET_PATH_NAME}/ledc-unable-to-rearch-100%-duty-cycle.rst
+            ./shared/rmt-idle-level-cannot-be-controlled.rst
+            ./{IDF_TARGET_PATH_NAME}/accidentally-enter-usb-boot-mode.rst
+            ./{IDF_TARGET_PATH_NAME}/aes-cpa-attack.rst
+            ./{IDF_TARGET_PATH_NAME}/ecc-timing-attack.rst
+            ./{IDF_TARGET_PATH_NAME}/tx-power-lower-than-expected
+            ./{IDF_TARGET_PATH_NAME}/pcnt-fail-to-trigger-step-interrupt.rst
 
 .. only:: esp32c2
 

@@ -13,6 +13,12 @@
 
       v0.0, v0.1, v0.2
 
+.. only:: esp32h2
+
+   .. tags::
+
+      v0.0, v0.1
+
 Description
 ^^^^^^^^^^^
 
@@ -23,13 +29,22 @@ However, in real situation, after the data transmission stops, the channel's idl
 Workarounds
 ^^^^^^^^^^^
 
-{IDF_TARGET_SUPPORT_VERSION:default="",esp32s3="v5.0",esp32c6="v5.1"}
+{IDF_TARGET_SUPPORT_VERSION:default="",esp32s3="v5.0",esp32c6="v5.1",esp32h2="v5.1"}
 
 Users are suggested to set RMT_IDLE_OUT_EN_CHn to 1 to only use registers to control the idle level.
 
 This issue has been bypassed since the first ESP-IDF version that supports continuous TX mode ({IDF_TARGET_SUPPORT_VERSION}). In these versions of ESP-IDF, it is configured that the idle level can only be controlled by registers.
 
-Solution
-^^^^^^^^
+.. only:: not esp32h2
 
-:bdg-warning:`No fix` scheduled.
+   Solution
+   ^^^^^^^^
+
+   :bdg-warning:`No fix` scheduled.
+
+.. only:: esp32h2
+
+   Solution
+   ^^^^^^^^
+
+   Fixed in chip revision :bdg-success:`v1.2`.
