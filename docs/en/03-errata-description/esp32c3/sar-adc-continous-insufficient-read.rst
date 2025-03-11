@@ -1,4 +1,4 @@
-[SAR ADC] SAR ADC Cannot Sample Sufficient Data in DMA Continuous Conversion Mode After Restart
+[ADC-270] SAR ADC Cannot Sample Sufficient Data in DMA Continuous Conversion Mode After Restart
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c3
