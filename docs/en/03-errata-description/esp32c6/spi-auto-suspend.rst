@@ -1,5 +1,5 @@
-[SPI] Enabling Flash Auto Suspend May Cause Abnormalities in Data Read
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[SPI-304] Enabling Flash Auto Suspend May Cause Abnormalities in Data Read
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c6
 

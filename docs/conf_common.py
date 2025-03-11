@@ -82,6 +82,9 @@ html_context['github_repo'] = 'esp-chip-errata'
 
 html_static_path = ['../_static']
 
+# Link to the custom CSS file
+html_css_files = ['theme_override.css']
+
 # Extra options required by sphinx_idf_theme
 project_slug = 'esp-chip-errata'
 

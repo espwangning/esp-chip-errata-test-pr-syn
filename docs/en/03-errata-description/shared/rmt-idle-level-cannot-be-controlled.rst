@@ -1,5 +1,5 @@
-[RMT] The Idle State Signal Level Might Run into Error in RMT Continuous TX Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[RMT-176] The Idle State Signal Level Might Run into Error in RMT Continuous TX Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c6
 

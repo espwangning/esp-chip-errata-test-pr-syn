@@ -1,5 +1,5 @@
-[Reset] System Reset Triggered by RTC Watchdog Timer Cannot Be Correctly Reported
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[RES-7080] System Reset Triggered by RTC Watchdog Timer Cannot Be Correctly Reported
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c6
 

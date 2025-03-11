@@ -1,4 +1,4 @@
-[SAR ADC] Data Duplication May Occur When SAR ADC Accessing GDMA
+[ADC-305] Data Duplication May Occur When SAR ADC Accessing GDMA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c6

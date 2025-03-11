@@ -1,4 +1,4 @@
-[时钟] RC_FAST_CLK 时钟无法校准
+[CLK-6996] RC_FAST_CLK 时钟无法校准
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 {IDF_TARGET_XTAL_FREQ:default="",esp32c6="40 MHz",esp32h2="32 MHz"}
