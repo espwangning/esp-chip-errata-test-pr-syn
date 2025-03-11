@@ -1,5 +1,5 @@
-[CPU] Possible Deadlock Due to Out-of-Order Execution of Instructions When Writing to LP SRAM Is Involved
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[CPU-206] Possible Deadlock Due to Out-of-Order Execution of Instructions When Writing to LP SRAM Is Involved
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c6
 

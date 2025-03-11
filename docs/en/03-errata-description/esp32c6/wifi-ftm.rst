@@ -1,5 +1,5 @@
-[Wi-Fi] {IDF_TARGET_NAME} Cannot Be 802.11mc FTM Initiator
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[WIFI-9686] {IDF_TARGET_NAME} Cannot Be 802.11mc FTM Initiator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c6
 

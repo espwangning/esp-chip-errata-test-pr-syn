@@ -1,5 +1,5 @@
-[Clock] Inaccurate Calibration of RC_FAST_CLK Clock
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[CLK-6996] Inaccurate Calibration of RC_FAST_CLK Clock
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 {IDF_TARGET_XTAL_FREQ:default="",esp32c6="40 MHz",esp32h2="32 MHz"}
 
