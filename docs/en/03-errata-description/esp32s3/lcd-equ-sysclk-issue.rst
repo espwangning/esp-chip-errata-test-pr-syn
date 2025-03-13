@@ -1,5 +1,5 @@
-[LCD] The LCD Module Exhibits Unreliable Behavior When Certain Clock Dividers Are Used
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[LCD-239] The LCD Module Exhibits Unreliable Behavior When Certain Clock Dividers Are Used
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s3
 

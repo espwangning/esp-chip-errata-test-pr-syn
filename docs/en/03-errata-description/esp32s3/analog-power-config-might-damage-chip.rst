@@ -1,4 +1,4 @@
-[Analog Power] Chip Will Be Damaged When BIAS_SLEEP = 0 and PD_CUR = 1
+[ANALOG-160] Chip Will Be Damaged When BIAS_SLEEP = 0 and PD_CUR = 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s3

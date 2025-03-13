@@ -1,4 +1,4 @@
-[SAR ADC] The Digital Controller (DMA) of SAR ADC2 Cannot Work
+[ADC-183] The Digital Controller (DMA) of SAR ADC2 Cannot Work
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32c3
