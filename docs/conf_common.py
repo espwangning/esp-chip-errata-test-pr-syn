@@ -82,8 +82,8 @@ html_context['github_repo'] = 'esp-chip-errata'
 
 html_static_path = ['../_static']
 
-# Link to the custom CSS file
-html_css_files = ['theme_override.css']
+# Custom css files to prevent break at hyphens
+html_css_files = ['prevent_break_at_hyphen.css']
 
 # Extra options required by sphinx_idf_theme
 project_slug = 'esp-chip-errata'
