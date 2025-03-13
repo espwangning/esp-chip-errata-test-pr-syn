@@ -1,5 +1,5 @@
-[RTC] RTC Register Read Error After Wake-up from Light-sleep Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[RTC-126] RTC Register Read Error After Wake-up from Light-sleep Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s3
 

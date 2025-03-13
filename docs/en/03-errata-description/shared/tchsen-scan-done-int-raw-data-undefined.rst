@@ -1,4 +1,4 @@
-[Touch Sensor] The TOUCH_SCAN_DONE_INT Interrupt Raw Data Value Is Undefined
+[TOUCH-100] The TOUCH_SCAN_DONE_INT Interrupt Raw Data Value Is Undefined
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s3

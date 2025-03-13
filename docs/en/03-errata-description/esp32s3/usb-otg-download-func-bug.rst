@@ -1,5 +1,5 @@
-[USB-OTG] The USB-OTG Download Function Is Unavailable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[USBOTG-4289] The USB-OTG Download Function Is Unavailable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s3
 
