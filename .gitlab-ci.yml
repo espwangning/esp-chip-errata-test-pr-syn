@@ -14,24 +14,67 @@ variables:
   image: $ESP_DOCS_ENV_IMAGE
   tags:
     - build
-  parallel:
-    matrix:
-      - DOCLANG: ["en", "zh_CN"]
-        DOCTGT: ["esp32s3", "esp32c6", "esp32h2", "esp32c2", "esp32s2", "esp32c3", "esp32"]
-
-build_errata_html:
-  extends:
-    - .build_template
   variables:
     DOCS_DIR: $CI_PROJECT_DIR/docs
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
+  before_script:
+    - |
+      KNOWN_TARGETS=("esp32s3" "esp32c6" "esp32h2" "esp32c2" "esp32s2" "esp32c3" "esp32")
+
+      echo "CI_COMMIT_SHA=$CI_COMMIT_SHA"
+      echo "CI_COMMIT_SHA=$CI_MERGE_REQUEST_DIFF_BASE_SHA"
+
+      CHANGED_FILES=$(git diff --name-only $CI_MERGE_REQUEST_DIFF_BASE_SHA $CI_COMMIT_SHA)
+
+      echo $CHANGED_FILES
+      MODIFIED_DOCTGT=()
+
+      for file in $CHANGED_FILES; do
+          MATCHED_TARGETS=()
+          
+          # 1. Check the path of changed files for exact match of targets
+          for target in "${KNOWN_TARGETS[@]}"; do
+              if [[ "$file" =~ (^|[^a-zA-Z0-9])$target([^a-zA-Z0-9]|$|[-_/]) ]]; then
+                  MATCHED_TARGETS+=("$target")
+              fi
+          done
+
+          # 2. If no match and the changed files are under shared folder, scan the file content for exact match of targets
+          if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/*/*/shared/*.rst ]] && [[ -f "$file" ]]; then
+            for target in "${KNOWN_TARGETS[@]}"; do
+                if grep -qE "(^|[^a-zA-Z0-9])$target([^a-zA-Z0-9]|$|[-_/])" "$file"; then
+                    MATCHED_TARGETS+=("$target")
+                fi
+            done
+          fi
+
+          # 3. If still no match, and the changed files are under the docs folder, matched targets would be all known targets
+          if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/** ]]; then
+              MATCHED_TARGETS=("${KNOWN_TARGETS[@]}")
+          fi
+
+          MODIFIED_DOCTGT+=("${MATCHED_TARGETS[@]}")
+      done
+
+      MODIFIED_DOCTGT=($(printf "%s\n" "${MODIFIED_DOCTGT[@]}" | sort -u))
+
+      export MODIFIED_DOCTGT="${MODIFIED_DOCTGT[@]}"
+      echo "MODIFIED_DOCTGT=${MODIFIED_DOCTGT[@]}"
+  parallel:
+    matrix:
+      - DOCLANG: ["en", "zh_CN"]
+  
+build_errata_html:
+  extends:
+    - .build_template
   script:
     - cd $DOCS_DIR
     - bash ./check_lang_folder_sync.sh
     - pip install -r requirements.txt
-    - build-docs --skip-reqs-check -l $DOCLANG -t $DOCTGT
+    - echo $MODIFIED_DOCTGT
+    - for tgt in $MODIFIED_DOCTGT; do build-docs --skip-reqs-check -l $DOCLANG -t $tgt; done
     - ARTIFACT_URL="$CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$DOCTGT/html/index.html"
     - echo "ESP-Chip-Errata documentation preview in HTML is available at $ARTIFACT_URL"
   artifacts:
@@ -44,23 +87,18 @@ build_errata_html:
 build_errata_pdf:
   extends:
     - .build_template
-  variables:
-    DOCS_DIR: $CI_PROJECT_DIR/docs
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
   artifacts:
     when: always
     paths:
       - $DOCS_DIR/_build/*/*/latex/*
       - $DOCS_DIR/_build/*/*/*.txt
-      # - $DOCS_DIR/logs/doc-url-*.txt
     expire_in: 4 days
   script:
     - cd $DOCS_DIR
     - bash ./check_lang_folder_sync.sh
     - pip install -r requirements.txt
-    - build-docs --skip-reqs-check -bs latex -l $DOCLANG -t $DOCTGT
+    - echo $MODIFIED_DOCTGT
+    - for tgt in $MODIFIED_DOCTGT; do build-docs --skip-reqs-check -bs latex -l $DOCLANG -t $tgt; done
     - ARTIFACT_URL="$CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$DOCTGT/latex/build/esp-chip-errata-$DOCLANG-master-$DOCTGT.pdf"
     - echo "ESP-Chip-Errata documentation preview in PDF is available at $ARTIFACT_URL"
 
@@ -78,7 +116,8 @@ deploy_docs_preview:
     - .deploy_docs_template
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
+      changes:
+        - "docs/**/*"
   variables:
     TYPE: "preview"
     DOCS_BUILD_DIR: "${CI_PROJECT_DIR}/docs/_build/"
@@ -109,6 +148,8 @@ post_links:
   rules:
     # Run for all changes to a merge request's source branch
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      changes:
+        - "docs/**/*"
   script:
     - pip install -r ${CI_PROJECT_DIR}/docs/requirements.txt
     - ls -al logs
@@ -117,8 +158,10 @@ post_links:
 deploy_docs_production:
   extends:
     - .deploy_docs_template
-  only:
-    - master
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for doc changes to the default branch
+      changes:
+        - "docs/**/*"
   variables:
     TYPE: "production"
     DOCS_BUILD_DIR: "${CI_PROJECT_DIR}/docs/_build/"
@@ -143,7 +186,6 @@ check_doc_links:
   allow_failure: true
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
   script:
     - cd docs
     - cd $DOCS_DIR
