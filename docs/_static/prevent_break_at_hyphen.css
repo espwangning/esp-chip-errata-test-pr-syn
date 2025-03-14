@@ -1,0 +1,9 @@
+/* Prevent line breaks at hyphens globally */
+td, th, p, span {
+  hyphens: none;
+}
+
+/* Handle Chinese punctuation more elegantly */
+p, li, td, th {
+line-break: strict;
+}

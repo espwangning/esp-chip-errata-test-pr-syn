@@ -48,6 +48,10 @@ numfig_format = {
     'table': 'Table %s',
 }
 
+# Chatbot widget
+html_js_files = ['chatbot_widget.js']
+html_css_files += ['chatbot_widget.css']
+
 # ----------------- English-specific LaTeX configurations -----------------
 
 en_footer_toc_config = r'''
