@@ -16,6 +16,6 @@
     * - v0.4
       - ``M4`` XXXX
     * - v1.1
-      - ---
+      - ``MH`` XXXX
 
   \ :sup:`1` Missing specification identifier "—" means modules with this chip revision are not mass produced.
