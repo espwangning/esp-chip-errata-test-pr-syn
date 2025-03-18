@@ -5,6 +5,10 @@
    * - 日期
      - 版本
      - 发布说明
+   * - 2025-03-18
+     - v1.2
+     -  - :doc:`/01-chip-identification/index`
+            - 新增芯片版本 v1.1 的模组丝印标识
    * - 2024-01-19
      - v1.1
      -  - :doc:`/01-chip-identification/index`

@@ -5,6 +5,10 @@
    * - Date
      - Version
      - Release Notes
+   * - 2025-03-18
+     - v1.2
+     -  - :doc:`/01-chip-identification/index`
+            - Added module marking for chip revision v1.1
    * - 2024-01-19
      - v1.1
      -  - :doc:`/01-chip-identification/index`
