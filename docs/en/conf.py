@@ -39,9 +39,6 @@ tags_intro_text = "Affected revisions: "
 tags_page_title = "Chip Revision"
 tags_page_header = "Known Errors"
 
-# Document version number
-version_num = {'esp32c3': 'Version 1.2', 'esp32c6': 'Version 1.2', 'esp32s2': 'Version 1.2', 'esp32s3': 'Version 1.2', 'esp32h2': 'Version 1.0', 'esp32c2': 'Version 1.1', 'esp32': 'Version 2.8'}
-
 # Table, figure, and section numbering configurations
 numfig_format = {
     'figure': 'Figure %s',
@@ -71,24 +68,5 @@ en_footer_toc_config = r'''
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 '''
-
-# Get Current Target
-def conf_setup(app, config):
-    print("Current target:", config.idf_target)
-
-    # Get the version number
-    doc_version = version_num.get(config.idf_target, 'Unknown Version')
-    print("Doc version:", doc_version)
-    
-    # Dynamically update the LaTeX preamble
-    doc_version_config = '''
-    %% Version number
-    \\newcommand{{\\docversion}}{{{}}}
-    '''.format(doc_version)  # Format doc_version here
-
-    # Update the preamble with the version info
-    config.latex_elements['preamble'] += doc_version_config
-
-user_setup_callback = conf_setup
 
 latex_elements['preamble'] = preamble + en_footer_toc_config + preamble_extra

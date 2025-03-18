@@ -1,6 +1,7 @@
 # The content below is copied from the esp-hdg repo and modified acc to the esp-chip-errata repo
 
 from esp_docs.conf_docs import *  # noqa: F403,F401
+from docs_version import version_num
 
 languages = ['en', 'zh_CN']
 idf_targets = ['esp32s2', 'esp32s3', 'esp32c3', 'esp32c6', 'esp32h2', 'esp32c2', 'esp32']
@@ -176,3 +177,22 @@ latex_table_style = ['colorrows']
 
 # Set the path of the logo \sphinxlogo used in the titlepage
 latex_logo = '../_static/esp-logo-standard-vertical.pdf'
+
+# Get Current Target
+def conf_setup(app, config):
+    print("Current target:", config.idf_target)
+
+    # Get the version number
+    doc_version = version_num.get(config.idf_target, 'Unknown Version')
+    print("Doc version:", doc_version)
+    
+    # Dynamically update the LaTeX preamble
+    doc_version_config = '''
+    %% Version number
+    \\newcommand{{\\docversion}}{{{}}}
+    '''.format(doc_version)  # Format doc_version here
+
+    # Update the preamble with the version info
+    config.latex_elements['preamble'] += doc_version_config
+
+user_setup_callback = conf_setup

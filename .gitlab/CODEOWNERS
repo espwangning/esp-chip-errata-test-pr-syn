@@ -31,7 +31,9 @@
 /docs/*/03-errata-description/shared/                           @documentation/codeowners/esp-chip-errata
 
 # Config                                                        Owners
-*.py                                                            @documentation/codeowners/esp-chip-errata
+/docs/*/conf.py                                                 @documentation/codeowners/esp-chip-errata
+/docs/conf_common.py                                            @documentation/codeowners/esp-chip-errata
+/docs/sphinx-tags.py                                            @documentation/codeowners/esp-chip-errata
 *.sh                                                            @documentation/codeowners/esp-chip-errata
 *.yml                                                           @documentation/codeowners/esp-chip-errata
 requirements.txt                                                @documentation/codeowners/esp-chip-errata

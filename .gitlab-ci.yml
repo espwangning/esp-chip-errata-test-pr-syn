@@ -48,8 +48,8 @@ variables:
             done
           fi
 
-          # 3. If still no match, and the changed files are under the docs folder, matched targets would be all known targets
-          if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/** ]]; then
+          # 3. If still no match, and the changed files are under the docs folder (excluding docs/docs_version.py), matched targets would be all known targets
+          if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/** ]] && [[ "$file" != "docs/docs_version.py" ]]; then
               MATCHED_TARGETS=("${KNOWN_TARGETS[@]}")
           fi
 
