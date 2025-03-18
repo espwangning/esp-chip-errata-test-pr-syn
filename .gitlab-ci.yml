@@ -68,7 +68,7 @@ build_errata_pdf:
   stage: deploy
   image: $ESP_DOCS_ENV_IMAGE
   tags:
-    - deploy_docs
+    - deploy
   needs:
     - build_errata_html
     - build_errata_pdf
