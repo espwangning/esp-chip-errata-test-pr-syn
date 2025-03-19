@@ -5,7 +5,11 @@
    * - 日期
      - 版本
      - 发布说明
-   * - 2024-08-
+   * - 2025-03-19
+     - v1.2
+     -  - :doc:`/03-errata-description/index`
+          - 新增章节 :doc:`/03-errata-description/esp32c6/clock-rc32k-not-oscillate`
+   * - 2024-08-13
      - v1.1
      -  - :doc:`/01-chip-identification/index`
             - 新增芯片版本 v0.2 的相关信息
