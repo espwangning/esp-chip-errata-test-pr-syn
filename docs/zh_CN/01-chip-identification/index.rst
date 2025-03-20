@@ -75,13 +75,13 @@ eFuse 位
 
 有些芯片错误不需要在晶圆片上修复，即不需要引入新的芯片版本。
 
-此时，芯片可通过丝印中的 **Date Code（日期代码）** 来识别，如图 :ref:`fig-chip-marking`。更多信息，请参考 `《乐鑫芯片包装信息》 <https://www.espressif.com/sites/default/files/documentation/espressif_chip_packaging_information_cn.pdf>`__。
+此时，芯片可通过丝印中的 **Date Code（日期代码）** 来识别，如图 :ref:`fig-chip-marking`。更多信息，请参考 `{IDF_TARGET_NAME} 芯片包装信息 > 芯片丝印 <https://docs.espressif.com/projects/esp-packaging/zh_CN/latest/esp32c6/01-marking/index_chip.html#id1>`__。
 
 
 生产工单
 ++++++++
 
-内置芯片的模组可通过物料标签中的 **生产工单 (PW Number)** 来识别，如图 :ref:`fig-PW-number`。更多信息，请参考 `《乐鑫模组包装信息》 <https://www.espressif.com/sites/default/files/documentation/espressif_module_packaging_information_cn.pdf>`__。
+内置芯片的模组可通过物料标签中的 **生产工单 (PW Number)** 来识别，如图 :ref:`fig-PW-number`。更多信息，请参考 `{IDF_TARGET_NAME} 模组包装信息 > 披萨盒 <https://docs.espressif.com/projects/esp-packaging/zh_CN/latest/{IDF_TARGET_PATH_NAME}/03-tape-and-reel/index_module.html#id4>`__。
 
 .. _fig-PW-number:
 
