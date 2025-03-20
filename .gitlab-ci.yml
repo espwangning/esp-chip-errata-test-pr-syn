@@ -23,17 +23,8 @@ variables:
     - |
       KNOWN_TARGETS=("esp32s3" "esp32c6" "esp32h2" "esp32c2" "esp32s2" "esp32c3" "esp32")
 
-      if [[ -n "$CI_MERGE_REQUEST_DIFF_BASE_SHA" ]]; then
-        # For MR pipelines
-        echo "Current ommit ID: $CI_COMMIT_SHA"
-        echo "Base commit: $CI_MERGE_REQUEST_DIFF_BASE_SHA"
-        CHANGED_FILES=$(git diff --name-only $CI_MERGE_REQUEST_DIFF_BASE_SHA $CI_COMMIT_SHA)
-      else
-        # For master pipelines
-        echo "Current commit ID: $CI_COMMIT_SHA"
-        echo "Last commit to master: $CI_COMMIT_BEFORE_SHA"
-        CHANGED_FILES=$(git diff --name-only 72256410f382092566e72233c38c5f80092c17e3 $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA)
-      fi
+      echo "Current commit ID: $CI_COMMIT_SHA"
+      CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r -m $CI_COMMIT_SHA)
 
       echo $CHANGED_FILES
       MODIFIED_DOCTGT=()
