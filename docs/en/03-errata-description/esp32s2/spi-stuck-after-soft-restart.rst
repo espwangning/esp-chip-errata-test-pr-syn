@@ -1,5 +1,5 @@
-[SPI] SPI is stuck after soft restart from auto suspension
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[SPI-106] SPI Is Stuck After Soft Restart from Auto Suspension
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2
 

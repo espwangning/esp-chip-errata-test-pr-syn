@@ -1,5 +1,5 @@
-[Touch Sensor] The scan done interrupt RTC_CNTL_TOUCH_SCAN_DONE_INT_ENA occurs twice during a single scan
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[TOUCH-99] The Scan Done Interrupt RTC_CNTL_TOUCH_SCAN_DONE_INT_ENA Occurs Twice During a Single Scan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2
 

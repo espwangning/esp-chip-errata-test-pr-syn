@@ -1,5 +1,5 @@
-[System] Leakage current at the VDDA and VDD3P3_RTC pin during shutdown
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[SYSTEM-86] Leakage Current at the VDDA and VDD3P3_RTC Pins during Shutdown
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2
 

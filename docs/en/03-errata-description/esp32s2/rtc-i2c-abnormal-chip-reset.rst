@@ -1,4 +1,4 @@
-[RTC I2C] The falling edge of RTC_I2C_RESET triggers reset at low temperature
+[I2C-97] The Falling Edge of RTC_I2C_RESET Triggers Reset at Low Temperature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2

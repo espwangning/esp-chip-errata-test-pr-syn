@@ -1,5 +1,5 @@
-[System] Random flash download failure
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[SYSTEM-117] Random Flash Download Failure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2
 

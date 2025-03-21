@@ -1,4 +1,4 @@
-[SAR ADC] Bit 1 of SAR ADC does not flip
+[ADC-112] Bit 1 of SAR ADC Does Not Flip
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2

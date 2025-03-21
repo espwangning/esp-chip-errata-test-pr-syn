@@ -1,4 +1,4 @@
-[USB OTG]  Abnormal data during AHB bus arbitration by USB OTG
+[USB-105]  Abnormal Data During AHB Bus Arbitration by USB OTG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32s2
@@ -19,7 +19,7 @@ Workarounds
 ^^^^^^^^^^^
 
 1. Avoid AHB bus competition between USB OTG and above peripherals by not using DMA mode of USB OTG, or disabling DMA mode of above peripherals.
-2. Avoid competing with the USB OTG’s AHB bus access. Specifically, set USB OTG’s AHB burst transfer mode to INCR to prevent competition from the other peripherals. In this mode, USB OTG will occupy the AHB bus exclusively until the burst transfer is completed.
+2. Avoid competing with the USB OTG's AHB bus access. Specifically, set USB OTG's AHB burst transfer mode to INCR to prevent competition from the other peripherals. In this mode, USB OTG will occupy the AHB bus exclusively until the burst transfer is completed.
 
 .. note::
     Use the INCR burst mode with care, as it requires adjustment to maximum packet size (MPS) for USB OTG endpoints, so that burst time is smaller than the timeout period of the competing peripherals.
@@ -28,7 +28,7 @@ Solution
 ^^^^^^^^
 
 Fixed in chip revision :bdg-success:`v1.0`. With this fix, the AHB bus will correctly arbitrate competing access.
-ESP-IDF adds USB OTG support starting from v4.4. When the specific conditions listed below are met, ESP-IDF enables the INCR mode workaround, i.e., using the INCR mode to guarantee that the USB OTG’s exclusive access to the AHB. The conditions for ESP-IDF to enable this workaround are as follows:
+ESP-IDF adds USB OTG support starting from v4.4. When the specific conditions listed below are met, ESP-IDF enables the INCR mode workaround, i.e., using the INCR mode to guarantee that the USB OTG's exclusive access to the AHB. The conditions for ESP-IDF to enable this workaround are as follows:
 
 1. For chip revision v0.0, ESP-IDF always enables the workaround.
 2. ESP-IDF added support for chip revision v1.0 in ESP-IDF v4.4.6, v5.0.4, v5.1.2, and v5.2. In these and above version, the software automatically detects the chip revision. When chip revision v1.0 or later revisions are detected, ESP-IDF no longer enables the workaround.
