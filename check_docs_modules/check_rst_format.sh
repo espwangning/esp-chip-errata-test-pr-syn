@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # target directory and the URL of Scripts repo
 TARGET_DIR="scripts"
@@ -18,13 +18,14 @@ fi
 EN_FILES=()
 ZH_CN_FILES=()
 
+echo "Changed files: $@"
+
 # Inspect each file passed to the script
 for file in "$@"; do
-  if echo "$file" | grep -q "en/"; then
-    EN_FILES+=("$file")
-  elif echo "$file" | grep -q "zh_CN/"; then
-    ZH_CN_FILES+=("$file")
-  fi
+  case "$file" in
+    docs/en/*) EN_FILES+=("$file") ;;
+    docs/zh_CN/*) ZH_CN_FILES+=("$file") ;;
+  esac
 done
 
 # Process English files if any

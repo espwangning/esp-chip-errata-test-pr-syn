@@ -8,6 +8,44 @@ variables:
   # Versioned esp-idf-doc env image to use for all document building jobs
   ESP_DOCS_ENV_IMAGE: "$CI_DOCKER_REGISTRY/esp-idf-doc-env-v5.4:1-1"
   ESP_DOCS_PATH: "$CI_PROJECT_DIR"
+  DOCTGT: "esp32s3 esp32c6 esp32h2 esp32c2 esp32s2 esp32c3 esp32"
+  DOCLANG: "en zh_CN"
+
+
+.check_template:
+  stage: check
+  image: $ESP_DOCS_ENV_IMAGE
+  tags: [check_doc_links]
+  variables:
+    DOCS_DIR: $CI_PROJECT_DIR/docs
+    GIT_STRATEGY: fetch
+    GIT_DEPTH: 0
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
+  before_script: 
+    - export CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r -m $CI_COMMIT_SHA)
+
+check_doc_links:
+  extends:
+    - .check_template
+  script:
+    - cd docs
+    - cd $DOCS_DIR
+    - pip install -r requirements.txt
+    - for lang in $DOCLANG; do
+        for target in $DOCTGT; do
+          build-docs -t $target -l $lang linkcheck;
+        done
+      done
+
+check_format:
+  extends:
+    - .check_template
+  script:
+    - git clone -b new_check_format $SCRIPTS_REPO
+    - echo "$CHANGED_FILES"
+    - check_docs_modules/check_rst_format.sh $CHANGED_FILES
 
 .build_template:
   stage: build
@@ -20,29 +58,33 @@ variables:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
   before_script:
+    - echo $CI_COMMIT_SHA
+    - echo $DOCTGT
+    - export CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r -m $CI_COMMIT_SHA)
+    - echo $CHANGED_FILES
     - |
-      KNOWN_TARGETS=("esp32s3" "esp32c6" "esp32h2" "esp32c2" "esp32s2" "esp32c3" "esp32")
-
-      echo "Current commit ID: $CI_COMMIT_SHA"
-      CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r -m $CI_COMMIT_SHA)
-
-      echo $CHANGED_FILES
       MODIFIED_DOCTGT=()
 
       for file in $CHANGED_FILES; do
           MATCHED_TARGETS=()
+
+          echo "Checking file: $file"
           
           # 1. Check the path of changed files for exact match of targets
-          for target in "${KNOWN_TARGETS[@]}"; do
+          for target in $DOCTGT; do
+              echo "Checking if target matches in file path"
               if [[ "$file" =~ (^|[^a-zA-Z0-9])$target([^a-zA-Z0-9]|$|[-_/]) ]]; then
+                  echo "Matched target in file path: $target"
                   MATCHED_TARGETS+=("$target")
               fi
           done
 
           # 2. If no match and the changed files are under shared folder, scan the file content for exact match of targets
           if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/*/*/shared/*.rst ]] && [[ -f "$file" ]]; then
-            for target in "${KNOWN_TARGETS[@]}"; do
+            echo "No match found in path. Scanning content of $file"
+            for target in $DOCTGT; do
                 if grep -qE "(^|[^a-zA-Z0-9])$target([^a-zA-Z0-9]|$|[-_/])" "$file"; then
+                    echo "Matched target in content: $target"
                     MATCHED_TARGETS+=("$target")
                 fi
             done
@@ -50,7 +92,8 @@ variables:
 
           # 3. If still no match, and the changed files are under the docs folder (excluding docs/docs_version.py), matched targets would be all known targets
           if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/** ]] && [[ "$file" != "docs/docs_version.py" ]]; then
-              MATCHED_TARGETS=("${KNOWN_TARGETS[@]}")
+              echo "No match found in path or content. Building docs for all targets ..."
+              MATCHED_TARGETS=($DOCTGT)
           fi
 
           MODIFIED_DOCTGT+=("${MATCHED_TARGETS[@]}")
@@ -85,12 +128,6 @@ build_errata_html:
 build_errata_pdf:
   extends:
     - .build_template
-  artifacts:
-    when: always
-    paths:
-      - $DOCS_DIR/_build/*/*/latex/*
-      - $DOCS_DIR/_build/*/*/*.txt
-    expire_in: 4 days
   script:
     - cd $DOCS_DIR
     - bash ./check_lang_folder_sync.sh
@@ -99,6 +136,12 @@ build_errata_pdf:
     - for tgt in $MODIFIED_DOCTGT; do build-docs --skip-reqs-check -bs latex -l $DOCLANG -t $tgt; done
     - ARTIFACT_URL="$CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$DOCTGT/latex/build/esp-chip-errata-$DOCLANG-master-$DOCTGT.pdf"
     - echo "ESP-Chip-Errata documentation preview in PDF is available at $ARTIFACT_URL"
+  artifacts:
+    when: always
+    paths:
+      - $DOCS_DIR/_build/*/*/latex/*
+      - $DOCS_DIR/_build/*/*/*.txt
+    expire_in: 4 days
 
 .deploy_docs_template:
   stage: deploy
@@ -174,26 +217,7 @@ deploy_docs_production:
     - export GIT_VER=$(git describe --always)
     - pip install -r ${CI_PROJECT_DIR}/docs/requirements.txt
     - deploy-docs
-
-check_doc_links:
-  stage: check
-  image: $ESP_DOCS_ENV_IMAGE
-  tags: [check_doc_links]
-  variables:
-    DOCS_DIR: $CI_PROJECT_DIR/docs
-  allow_failure: true
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
-  script:
-    - cd docs
-    - cd $DOCS_DIR
-    - pip install -r requirements.txt
-    - build-docs -t $DOCTGT -l $DOCLANG linkcheck
-  parallel:
-    matrix:
-      - DOCLANG: ["en", "zh_CN"]
-        DOCTGT: ["esp32s2", "esp32s3", "esp32c3", "esp32c6", "esp32h2", "esp32c2", "esp32"]
-
+  
 check_line_num:
   image: python:3.8
   stage: auto_trans
@@ -247,18 +271,3 @@ translate_updated:
     - echo $CI_COMMIT_REF_NAME
     - python3 ./auto-translate/translate_rst_files.py $OPENAI_API_KEY $GITLAB_URL $TRANS_BOT_TOKEN $PROJECT_ID $CI_COMMIT_REF_NAME -a
     - echo "Translation completed"
-
-# check_format:
-#   stage: check
-#   image: $ESP_DOCS_ENV_IMAGE
-#   tags:  [host_test]
-#   rules:
-#     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
-#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
-#   script:
-#     - git clone -b new_check_format $SCRIPTS_REPO
-#     - python3 tools/check_rst_format_mr_files.py
-#   variables:
-#       GIT_STRATEGY: fetch
-#       GIT_DEPTH: 0
-#       allow_failure: true

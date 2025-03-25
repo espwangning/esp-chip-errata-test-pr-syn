@@ -8,7 +8,7 @@
    * - 2025-03-19
      - v1.2
      -  - :doc:`/03-errata-description/index`
-          - Added Section :doc:`/03-errata-description/esp32c6/clock-rc32k-not-oscillate`
+            - Added Section :doc:`/03-errata-description/esp32c6/clock-rc32k-not-oscillate`
    * - 2024-08-13
      - v1.1
      -  - :doc:`/01-chip-identification/index`
