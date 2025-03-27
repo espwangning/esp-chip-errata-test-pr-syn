@@ -86,6 +86,9 @@ html_static_path = ['../_static']
 # Custom css files to prevent break at hyphens
 html_css_files = ['prevent_break_at_hyphen.css']
 
+# Add chatbot widget
+html_css_files += ['chatbot_widget.css']
+
 # Extra options required by sphinx_idf_theme
 project_slug = 'esp-chip-errata'
 
@@ -185,7 +188,7 @@ def conf_setup(app, config):
     # Get the version number
     doc_version = version_num.get(config.idf_target, 'Unknown Version')
     print("Doc version:", doc_version)
-    
+
     # Dynamically update the LaTeX preamble
     doc_version_config = '''
     %% Version number

@@ -45,6 +45,9 @@ numfig_format = {
     'table': '表 %s',
 }
 
+# Chatbot widget
+html_js_files = ['chatbot_widget_cn.js']
+
 # ----------------- Chinese-specific LaTeX configurations -----------------
 
 cn_footer_toc_config = r'''

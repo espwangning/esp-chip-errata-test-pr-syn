@@ -1,7 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     var script = document.createElement("script");
     script.src = "https://widget.kapa.ai/kapa-widget.bundle.js";
+    script.setAttribute("data-bot-protection-mechanism", "hcaptcha");
     script.setAttribute("data-website-id", "31c12096-59db-40c4-8656-b0e04a9cb053");
     script.setAttribute("data-project-name", "ESP Chip Errata");
     script.setAttribute("data-project-color", "#C62817");
@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     script.setAttribute("data-button-border-radius", "50%");
     script.setAttribute("data-button-bg-color", "#38393a");
     script.setAttribute("data-button-border", "#38393a");
-    script.setAttribute("data-button-height", "52px");
-    script.setAttribute("data-button-width", "52px");
+    script.setAttribute("data-button-height", "45px");
+    script.setAttribute("data-button-width", "45px");
     script.setAttribute("data-button-animation-enabled", "false");
     script.setAttribute("data-button-image-height", "100%");
     script.setAttribute("data-button-image-width", "100%");
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     script.setAttribute("data-button-box-shadow", "0px 6px 12px 1px rgba(0,0,0,0.16)");
     script.setAttribute("data-modal-override-open-class", "test-ai");
     script.setAttribute("data-user-analytics-fingerprint-enabled", "true");
+    script.setAttribute("data-modal-example-questions-col-span", "6,6");
     script.setAttribute("data-modal-disclaimer", "This custom large language model (LLM), trained on official documentation from espressif.com, is designed to provide technical support and answers related to Espressif’s products and services. Give it a try, share your thoughts, and let us know your feedback—we truly appreciate it! \n\n**Note**: AI-generated information may be incomplete or inaccurate. Always verify critical information with official sources.");
     script.setAttribute("data-modal-example-questions", "What information does errata include?,Does ESP32-S3 DMA have unfixed bugs in errata?");
     script.async = true;

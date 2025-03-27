@@ -46,8 +46,7 @@ numfig_format = {
 }
 
 # Chatbot widget
-html_js_files = ['chatbot_widget.js']
-html_css_files += ['chatbot_widget.css']
+html_js_files = ['chatbot_widget_en.js']
 
 # ----------------- English-specific LaTeX configurations -----------------
 
