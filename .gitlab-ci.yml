@@ -58,10 +58,11 @@ check_format:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
   before_script:
-    - echo $CI_COMMIT_SHA
-    - echo $DOCTGT
-    - export CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r -m $CI_COMMIT_SHA)
-    - echo $CHANGED_FILES
+    - |
+      echo $CI_COMMIT_SHA
+      echo $DOCTGT
+      export CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r -m $CI_COMMIT_SHA)
+      echo "The following files have been changed: $CHANGED_FILES"
     - |
       MODIFIED_DOCTGT=()
 
@@ -90,10 +91,22 @@ check_format:
             done
           fi
 
-          # 3. If still no match, and the changed files are under the docs folder (excluding docs/docs_version.py), matched targets would be all known targets
+          # 3. If still no match, and the changed files are under the docs folder (excluding docs/docs_version.py), build all targets
           if [[ ${#MATCHED_TARGETS[@]} -eq 0 ]] && [[ "$file" == docs/** ]] && [[ "$file" != "docs/docs_version.py" ]]; then
               echo "No match found in path or content. Building docs for all targets ..."
               MATCHED_TARGETS=($DOCTGT)
+          fi
+
+          # 4. If add build label, build all targets
+          if [[ ",$CI_MERGE_REQUEST_LABELS," =~ ,build, ]]; then
+            echo "Build label detected. Building docs for all targets ..."
+            MATCHED_TARGETS=($DOCTGT)
+          fi
+
+          # 5. If commit to the default branch, build all targets
+          if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+            echo "Commit is on default branch ($CI_DEFAULT_BRANCH). Building docs for all targets ..."
+            MATCHED_TARGETS=($DOCTGT)
           fi
 
           MODIFIED_DOCTGT+=("${MATCHED_TARGETS[@]}")
@@ -106,6 +119,7 @@ check_format:
   parallel:
     matrix:
       - DOCLANG: ["en", "zh_CN"]
+  retry: 2
   
 build_errata_html:
   extends:
@@ -116,8 +130,7 @@ build_errata_html:
     - pip install -r requirements.txt
     - echo $MODIFIED_DOCTGT
     - for tgt in $MODIFIED_DOCTGT; do build-docs --skip-reqs-check -l $DOCLANG -t $tgt; done
-    - ARTIFACT_URL="$CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$DOCTGT/html/index.html"
-    - echo "ESP-Chip-Errata documentation preview in HTML is available at $ARTIFACT_URL"
+    - for tgt in $MODIFIED_DOCTGT; do echo "See $CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$tgt/html/index.html"; done
   artifacts:
     when: always
     paths:
@@ -134,8 +147,7 @@ build_errata_pdf:
     - pip install -r requirements.txt
     - echo $MODIFIED_DOCTGT
     - for tgt in $MODIFIED_DOCTGT; do build-docs --skip-reqs-check -bs latex -l $DOCLANG -t $tgt; done
-    - ARTIFACT_URL="$CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$DOCTGT/latex/build/esp-chip-errata-$DOCLANG-master-$DOCTGT.pdf"
-    - echo "ESP-Chip-Errata documentation preview in PDF is available at $ARTIFACT_URL"
+    - for tgt in $MODIFIED_DOCTGT; do echo "See $CI_JOB_URL/artifacts/file/docs/_build/$DOCLANG/$tgt/latex/build/esp-chip-errata-$DOCLANG-master-$tgt.pdf"; done
   artifacts:
     when: always
     paths:
@@ -159,6 +171,7 @@ deploy_docs_preview:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
       changes:
         - "docs/**/*"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && ($CI_MERGE_REQUEST_LABELS =~ /^(?:[^,\n\r]+,)*build(?:,[^,\n\r]+)*$/i)  # Run if a merge request has build label
   variables:
     TYPE: "preview"
     DOCS_BUILD_DIR: "${CI_PROJECT_DIR}/docs/_build/"
@@ -187,10 +200,10 @@ post_links:
   needs:
     - deploy_docs_preview
   rules:
-    # Run for all changes to a merge request's source branch
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
       changes:
         - "docs/**/*"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && ($CI_MERGE_REQUEST_LABELS =~ /^(?:[^,\n\r]+,)*build(?:,[^,\n\r]+)*$/i)  # Run if a merge request has build label
   script:
     - pip install -r ${CI_PROJECT_DIR}/docs/requirements.txt
     - ls -al logs
@@ -200,9 +213,7 @@ deploy_docs_production:
   extends:
     - .deploy_docs_template
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for doc changes to the default branch
-      changes:
-        - "docs/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for changes to the default branch
   variables:
     TYPE: "production"
     DOCS_BUILD_DIR: "${CI_PROJECT_DIR}/docs/_build/"

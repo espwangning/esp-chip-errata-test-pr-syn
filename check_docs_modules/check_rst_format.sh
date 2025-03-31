@@ -31,13 +31,17 @@ done
 # Process English files if any
 if [ ${#EN_FILES[@]} -gt 0 ]; then
   echo "Start checking the rst format for English file(s): ${EN_FILES[*]}"
-  python3 scripts/check_docs_format.py "en" "${EN_FILES[@]}"
+  for file in "${EN_FILES[@]}"; do
+    python3 scripts/check_docs_format.py "en" "$file"
+  done
 fi
 
 # Process Chinese files if any
 if [ ${#ZH_CN_FILES[@]} -gt 0 ]; then
   echo "Start checking the rst format for Chinese file(s): ${ZH_CN_FILES[*]}"
-  python3 scripts/check_docs_format.py "zh_CN" "${ZH_CN_FILES[@]}"
+  for file in "${ZH_CN_FILES[@]}"; do
+    python3 scripts/check_docs_format.py "zh_CN" "$file"
+  done
 fi
 
 # Handle case where no files matched

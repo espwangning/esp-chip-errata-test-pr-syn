@@ -101,6 +101,8 @@ class PythonGitlabNotes():
         """
         note = "Documentation preview:\n\n"
 
+        note += "If the pipeline only builds a subset of targets, but you intend to build for all targets, add the `build` label to this MR.\n"
+
         # Process both HTML and PDF links
         for chip_series, language_links_html in self.series_links_html.items():
             product_name = chip_series.upper()  # Default value
