@@ -45,7 +45,13 @@ check_format:
   script:
     - git clone -b new_check_format $SCRIPTS_REPO
     - echo "$CHANGED_FILES"
-    - check_docs_modules/check_rst_format.sh $CHANGED_FILES
+    - |
+      output=$(bash check_docs_modules/check_rst_format.sh $CHANGED_FILES)
+      echo "$output"
+      # Check if the output of the script contains any syntax errors
+      if echo "$output" | grep -q "Syntax check found"; then
+        exit 1  # Fail the pipeline if syntax errors are found
+      fi
 
 .build_template:
   stage: build
