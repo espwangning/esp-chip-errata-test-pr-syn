@@ -1,5 +1,5 @@
-[SAR ADC] Unavailable Channel 4 in SRA ADC1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ADC-7227] Unavailable Channel 4 in SRA ADC1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2
 

@@ -1,5 +1,5 @@
-[802.15.4] TX Power Variation in Certain RF Certification
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[802.15.4-9538] TX Power Variation in Certain RF Certification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2
 

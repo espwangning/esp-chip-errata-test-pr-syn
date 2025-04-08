@@ -1,5 +1,5 @@
-[SAR ADC] Loss of Precision in Lower Four Bits of SAR ADC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ADC-1477] Loss of Precision in Lower Four Bits of SAR ADC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2
 

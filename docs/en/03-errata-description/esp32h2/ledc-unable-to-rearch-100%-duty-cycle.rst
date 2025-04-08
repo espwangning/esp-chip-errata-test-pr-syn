@@ -1,5 +1,5 @@
-[LEDC] Unable to Reach 100% Duty Cycle at Maximum Duty Resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[LEDC-253] Unable to Reach 100% Duty Cycle at Maximum Duty Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2
 

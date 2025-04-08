@@ -1,5 +1,5 @@
-[Chip Boot] Accidentally Enter USB Download Boot Mode If the Power-up Duration is Too Long
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[BOOT-9537] Accidentally Enter USB Download Boot Mode If the Power-up Duration Is Too Long
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2
 

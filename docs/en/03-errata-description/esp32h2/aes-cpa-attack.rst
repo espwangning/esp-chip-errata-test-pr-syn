@@ -1,4 +1,4 @@
-[AES|XTS-AES] CPA Attack-Related Security Vulnerability
+[AES-11401] CPA Attack-Related Security Vulnerability
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2

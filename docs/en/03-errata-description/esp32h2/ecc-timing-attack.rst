@@ -1,4 +1,4 @@
-[ECC|ECDSA] Timing Attack-Related Security Vulnerability
+[ECC-11400] Timing Attack-Related Security Vulnerability
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. only:: esp32h2
