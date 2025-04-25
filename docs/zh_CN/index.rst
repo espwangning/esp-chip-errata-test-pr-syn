@@ -37,4 +37,10 @@
    03-errata-description/index
    :html: _tags/tagsindex
    revision-history/index
+
+.. toctree::
+   :hidden:
+   :caption: 相关资源与法律声明
+
    resources
+   disclaimer-and-copyright

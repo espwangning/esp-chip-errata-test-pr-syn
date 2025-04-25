@@ -37,4 +37,10 @@
    03-errata-description/index
    :html: _tags/tagsindex
    revision-history/index
+
+.. toctree::
+   :hidden:
+   :caption: Resources and Legal Notices
+
    resources
+   disclaimer-and-copyright
