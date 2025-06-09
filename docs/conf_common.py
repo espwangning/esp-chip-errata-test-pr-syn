@@ -1,10 +1,23 @@
 # The content below is copied from the esp-hdg repo and modified acc to the esp-chip-errata repo
 
 from esp_docs.conf_docs import *  # noqa: F403,F401
-from docs_version import version_num
+import yaml
 
 languages = ['en', 'zh_CN']
+
 idf_targets = ['esp32s2', 'esp32s3', 'esp32c3', 'esp32c6', 'esp32h2', 'esp32c2', 'esp32']
+
+# Map idf_target to chip_series in lbcf.yml
+idf_target_to_chip_series = {
+    "esp32": "ESP32",
+    "esp32s2": "ESP32-S2",
+    "esp32c2": "ESP8684",
+    "esp32s3": "ESP32-S3",
+    "esp32c3": "ESP32-C3",
+    "esp32c6": "ESP32-C6",
+    "esp32h2": "ESP32-H2",
+}
+
 extensions += ['sphinx_copybutton',
                # Note: order is important here, events must
                # be registered by one extension before they can be
@@ -181,21 +194,33 @@ latex_table_style = ['colorrows']
 # Set the path of the logo \sphinxlogo used in the titlepage
 latex_logo = '../_static/esp-logo-standard-vertical.pdf'
 
-# Get Current Target
+# Get doc version from lbcf.yml and add to PDF
+def load_chip_series_version(idf_target):
+    chip_series = idf_target_to_chip_series.get(idf_target.lower())
+    if not chip_series:
+        return 'Unknown Version'
+
+    yml_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".lbcf.yml"))
+    with open(yml_path, 'r', encoding='utf-8') as f:
+        yml = yaml.safe_load(f)
+
+    for entry in yml.get("documents", []):  # get the list under the 'documents' key
+        if entry.get("chip_series") == chip_series and "version" in entry:
+            return entry["version"]
+
+    return "Unknown Version"
+
 def conf_setup(app, config):
     print("Current target:", config.idf_target)
 
-    # Get the version number
-    doc_version = version_num.get(config.idf_target, 'Unknown Version')
+    doc_version = load_chip_series_version(config.idf_target)
     print("Doc version:", doc_version)
 
-    # Dynamically update the LaTeX preamble
     doc_version_config = '''
     %% Version number
     \\newcommand{{\\docversion}}{{{}}}
-    '''.format(doc_version)  # Format doc_version here
+    '''.format(doc_version)
 
-    # Update the preamble with the version info
     config.latex_elements['preamble'] += doc_version_config
 
 user_setup_callback = conf_setup

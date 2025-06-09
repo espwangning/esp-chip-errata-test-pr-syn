@@ -1,0 +1,379 @@
+####################################
+# Shared Configuration
+####################################
+
+#syntax_version: version of this YMAL file. This configuration is shared by all documents in one project.
+syntax_version: v0.62
+
+
+######################################
+# Document-specific Configuration
+######################################
+
+documents:
+########################################
+# ESP32 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32 Series SoC Errata
+      doc_id: 3709
+      translation_docid: 3710
+      chip_series: ESP32
+      product_name:
+        - ESP32 SoC Series Group
+      product_name_old_website:
+        - ESP32
+      soc_series_base_filter: ESP32
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v2.9 # or specific version number
+      revision_date: 2025-01-03
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32/index.html
+      document_summary: This document describes known errata in ESP32 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32 系列芯片勘误表
+      doc_id: 3710
+      translation_docid: 3709
+      chip_series: ESP32
+      product_name:
+        - ESP32 SoC Series Group
+      product_name_old_website:
+        - ESP32
+      soc_series_base_filter: ESP32
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v2.9 # or specific version number
+      revision_date: 2025-01-03 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32/index.html
+      document_summary: 本文档描述了 ESP32 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-S2 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-S2 Series SoC Errata
+      doc_id: 5545
+      translation_docid: 5546
+      chip_series: ESP32-S2
+      product_name:
+        - ESP32-S2 SoC Series
+      product_name_old_website:
+        - ESP32-S2
+      soc_series_base_filter: ESP32-S2
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2024-08-19
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32s2/index.html
+      document_summary: This document describes known errata in ESP32-S2 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-S2 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-S2 系列芯片勘误表
+      doc_id: 5546
+      translation_docid: 5545
+      chip_series: ESP32-S2
+      product_name:
+        - ESP32-S2 SoC Series
+      product_name_old_website:
+        - ESP32-S2
+      soc_series_base_filter: ESP32-S2
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2024-08-19 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32s2/index.html
+      document_summary: 本文档描述了 ESP32-S2 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-S3 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-S3 Series SoC Errata
+      doc_id: 6121
+      translation_docid: 6255
+      chip_series: ESP32-S3
+      product_name:
+        - ESP32-S3 SoC Series Group
+      product_name_old_website:
+        - ESP32-S3
+      soc_series_base_filter: ESP32-S3
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.3 # or specific version number
+      revision_date: 2025-03-31
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32s3/index.html
+      document_summary: This document describes known errata in ESP32-S3 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-S3 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-S3 系列芯片勘误表
+      doc_id: 6255
+      translation_docid: 6121
+      chip_series: ESP32-S3
+      product_name:
+        - ESP32-S3 SoC Series Group
+      product_name_old_website:
+        - ESP32-S3
+      soc_series_base_filter: ESP32-S3
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.3 # or specific version number
+      revision_date: 2025-03-31 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32s3/index.html
+      document_summary: 本文档描述了 ESP32-S3 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP8684 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-C2 (ESP8684) Series SoC Errata
+      doc_id: 6705
+      translation_docid: 6707
+      chip_series: ESP8684
+      product_name:
+        - ESP32-C2 SoC Series Group
+        - ESP8684 SoC Series
+      product_name_old_website:
+        - ESP8684
+      soc_series_base_filter: ESP32-C2
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2025-01-02
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32c2/index.html
+      document_summary: This document describes known errata in ESP8684 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP8684 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-C2 (ESP8684) 系列芯片勘误表
+      doc_id: 6707
+      translation_docid: 6705
+      chip_series: ESP8684
+      product_name:
+        - ESP32-C2 SoC Series Group
+        - ESP8684 SoC Series
+      product_name_old_website:
+        - ESP8684
+      soc_series_base_filter: ESP32-C2
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2025-01-02 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32c2/index.html
+      document_summary: 本文档描述了 ESP8684 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-C3 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-C3 Series SoC Errata
+      doc_id: 6333
+      translation_docid: 6335
+      chip_series: ESP32-C3
+      product_name:
+        - ESP32-C3 SoC Series Group
+      product_name_old_website:
+        - ESP32-C3
+      soc_series_base_filter: ESP32-C3
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2025-03-18
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32c3/index.html
+      document_summary: This document describes known errata in ESP32-C3 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-C3 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-C3 系列芯片勘误表
+      doc_id: 6335
+      translation_docid: 6333
+      chip_series: ESP32-C3
+      product_name:
+        - ESP32-C3 SoC Series Group
+      product_name_old_website:
+        - ESP32-C3
+      soc_series_base_filter: ESP32-C3
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2025-03-18 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32c3/index.html
+      document_summary: 本文档描述了 ESP32-C3 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-C6 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-C6 Series SoC Errata
+      doc_id: 7165
+      translation_docid: 7167
+      chip_series: ESP32-C6
+      product_name:
+        - ESP32-C6 SoC Series
+      product_name_old_website:
+        - ESP32-C6
+      soc_series_base_filter: ESP32-C6
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2025-03-19
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32c6/index.html
+      document_summary: This document describes known errata in ESP32-C6 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-C6 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-C6 系列芯片勘误表
+      doc_id: 7167
+      translation_docid: 7165
+      chip_series: ESP32-C6
+      product_name:
+        - ESP32-C6 SoC Series
+      product_name_old_website:
+        - ESP32-C6
+      soc_series_base_filter: ESP32-C6
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.2 # or specific version number
+      revision_date: 2025-03-19 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32c6/index.html
+      document_summary: 本文档描述了 ESP32-C6 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-H2 Series SoC Errata
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-H2 Series SoC Errata
+      doc_id: 7119
+      translation_docid: 7121
+      chip_series: ESP32-H2
+      product_name:
+        - ESP32-H2 SoC Series
+      product_name_old_website:
+        - ESP32-H2
+      soc_series_base_filter: ESP32-H2
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.0 # or specific version number
+      revision_date: 2025-03-06
+      language: en # or cn
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32h2/index.html
+      document_summary: This document describes known errata in ESP32-H2 series of SoCs.
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
+########################################
+# ESP32-H2 系列芯片勘误表
+########################################
+    # Common configuration for internal release and public release
+    - document_name: ESP32-H2 系列芯片勘误表
+      doc_id: 7121
+      translation_docid: 7119
+      chip_series: ESP32-H2
+      product_name:
+        - ESP32-H2 SoC Series
+      product_name_old_website:
+        - ESP32-H2
+      soc_series_base_filter: ESP32-H2
+      document_type: errata # or errata, datasheet, reference, book, guide, application note
+      document_type_old_website: datasheet & errata
+      version: v1.0 # or specific version number
+      revision_date: 2025-03-06 # or generate automatically?
+      language: cn # or en
+      document_storage: docs
+      document_link: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32h2/index.html
+      document_summary: 本文档描述了 ESP32-H2 系列芯片的已知错误。
+      notify_subscribers: true # or false
+      visibility_on_website: show # or hide
+      scheduled_release_date:
+      document_status: active
+      document_classification: public
