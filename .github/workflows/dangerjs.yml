@@ -20,3 +20,7 @@ jobs:
       uses: espressif/shared-github-dangerjs@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        instructions-gitlab-mirror: 'true'
+        instructions-cla-link: 'https://cla-assistant.io/espressif/esp-chip-errata'
+        commit-messages-types: 'bugfix,docs'

@@ -13,6 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Sync approved PRs to internal codebase
         uses: espressif/sync-pr-to-gitlab@v1
         env:
